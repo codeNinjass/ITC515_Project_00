@@ -1,14 +1,15 @@
+//import packages 
 package library.returnBook;
 import java.util.Scanner;
 
-
 public class ReturnBookUI {
 
-	public static enum uI_sTaTe { INITIALISED, READY, INSPECTING, COMPLETED };
+	// static class
+	public static enum uiState { INITIALISED, READY, INSPECTING, COMPLETED };
 
 	private rETURN_bOOK_cONTROL CoNtRoL;
 	private Scanner iNpUt;
-	private uI_sTaTe StATe;
+	private uiState StATe;
 
 	
 	public ReturnBookUI(rETURN_bOOK_cONTROL cOnTrOL) {
