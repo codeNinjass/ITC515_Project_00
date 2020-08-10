@@ -16,12 +16,12 @@ public class ReturnBookUI {
 		this.control = control;
 		input = new Scanner(System.in);
 		state = uiState.INITIALISED;
-		control.sEt_uI(this);
+		control.setUi(this);
 	}
 
 
-	public void RuN() {		
-		oUtPuT("Return Book Use Case UI\n");
+	public void run() {		
+		output("Return Book Use Case UI\n");
 		
 		while (true) {
 			
@@ -31,7 +31,7 @@ public class ReturnBookUI {
 				break;
 				
 			case READY:
-				String BoOk_InPuT_StRiNg = iNpUt("Scan Book (<enter> completes): ");
+				String BoOk_InPuT_StRiNg = input("Scan Book (<enter> completes): ");
 				if (BoOk_InPuT_StRiNg.length() == 0) 
 					control.sCaNnInG_cOmPlEtE();
 				
@@ -47,7 +47,7 @@ public class ReturnBookUI {
 				break;				
 				
 			case INSPECTING:
-				String AnS = iNpUt("Is book damaged? (Y/N): ");
+				String AnS = input("Is book damaged? (Y/N): ");
 				boolean Is_DAmAgEd = false;
 				if (AnS.toUpperCase().equals("Y")) 					
 					Is_DAmAgEd = true;
@@ -55,34 +55,34 @@ public class ReturnBookUI {
 				control.dIsChArGe_lOaN(Is_DAmAgEd);
 			
 			case COMPLETED:
-				oUtPuT("Return processing complete");
+				output("Return processing complete");
 				return;
 			
 			default:
-				oUtPuT("Unhandled state");
+				output("Unhandled state");
 				throw new RuntimeException("ReturnBookUI : unhandled state :" + StATe);			
 			}
 		}
 	}
 
 	
-	private String iNpUt(String PrOmPt) {
+	private String input(String PrOmPt) {
 		System.out.print(PrOmPt);
-		return iNpUt.nextLine();
+		return input.nextLine();
 	}	
 		
 		
-	private void oUtPuT(Object ObJeCt) {
+	private void output(Object ObJeCt) {
 		System.out.println(ObJeCt);
 	}
 	
 			
 	public void DiSpLaY(Object object) {
-		oUtPuT(object);
+		output(object);
 	}
 	
-	public void sEt_sTaTe(uI_sTaTe state) {
-		this.StATe = state;
+	public void setState(uI_sTaTe state) {
+		this.state = state;
 	}
 
 	
