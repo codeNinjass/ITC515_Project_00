@@ -2,10 +2,16 @@
 package library.returnBook;
 import java.util.Scanner;
 
+/*
+Author: Saroj
+Mediator: Anish
+Reviewer: Bednidhi
+*/
+
 public class ReturnBookUI {
 
 	// static class
-	public static enum uiState { INITIALISED, READY, INSPECTING, COMPLETED };
+	public static enum uiState { initialised, ready, inspecting, completed };
 
 	private returnBookControl control;
 	private Scanner input;
@@ -15,7 +21,7 @@ public class ReturnBookUI {
 	public ReturnBookUI(returnBookControl control) {
 		this.control = control;
 		input = new Scanner(System.in);
-		state = uiState.INITIALISED;
+		state = uiState.initialised;
 		control.setUi(this);
 	}
 
@@ -27,61 +33,61 @@ public class ReturnBookUI {
 			
 			switch (state) {
 			
-			case INITIALISED:
+			case initialised:
 				break;
 				
-			case READY:
-				String BoOk_InPuT_StRiNg = input("Scan Book (<enter> completes): ");
-				if (BoOk_InPuT_StRiNg.length() == 0) 
+			case ready:
+				String bookInputString = input("Scan Book (<enter> completes): ");
+				if (bookInputString.length() == 0) 
 					control.sCaNnInG_cOmPlEtE();
 				
 				else {
 					try {
-						int Book_Id = Integer.valueOf(BoOk_InPuT_StRiNg).intValue();
-						control.bOoK_sCaNnEd(Book_Id);
+						int bookId = Integer.valueOf(bookInputString).intValue();
+						control.bOoK_sCaNnEd(bookId);
 					}
 					catch (NumberFormatException e) {
-						oUtPuT("Invalid bookId");
+						output("Invalid bookId");
 					}					
 				}
 				break;				
 				
-			case INSPECTING:
-				String AnS = input("Is book damaged? (Y/N): ");
-				boolean Is_DAmAgEd = false;
-				if (AnS.toUpperCase().equals("Y")) 					
-					Is_DAmAgEd = true;
+			case inspecting:
+				String ans = input("Is book damaged? (Y/N): ");
+				boolean isDamaged = false;
+				if (ans.toUpperCase().equals("Y")) 					
+					isDamaged = true;
 				
-				control.dIsChArGe_lOaN(Is_DAmAgEd);
+				control.dIsChArGe_lOaN(isDamaged);
 			
-			case COMPLETED:
+			case completed:
 				output("Return processing complete");
 				return;
 			
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("ReturnBookUI : unhandled state :" + StATe);			
+				throw new RuntimeException("ReturnBookUI : unhandled state :" + state);			
 			}
 		}
 	}
 
 	
-	private String input(String PrOmPt) {
-		System.out.print(PrOmPt);
+	private String input(String prompt) {
+		System.out.print(prompt);
 		return input.nextLine();
 	}	
 		
 		
-	private void output(Object ObJeCt) {
-		System.out.println(ObJeCt);
+	private void output(Object object) {
+		System.out.println(object);
 	}
 	
 			
-	public void DiSpLaY(Object object) {
+	public void display(Object object) {
 		output(object);
 	}
 	
-	public void setState(uI_sTaTe state) {
+	public void setState(uiState state) {
 		this.state = state;
 	}
 
