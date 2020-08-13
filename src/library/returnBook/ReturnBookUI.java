@@ -39,12 +39,12 @@ public class ReturnBookUI {
 			case ready:
 				String bookInputString = input("Scan Book (<enter> completes): ");
 				if (bookInputString.length() == 0) 
-					control.sCaNnInG_cOmPlEtE();
+					control.scanningComplete();
 				
 				else {
 					try {
 						int bookId = Integer.valueOf(bookInputString).intValue();
-						control.bOoK_sCaNnEd(bookId);
+						control.bookScanned(bookId);
 					}
 					catch (NumberFormatException e) {
 						output("Invalid bookId");
@@ -58,7 +58,7 @@ public class ReturnBookUI {
 				if (ans.toUpperCase().equals("Y")) 					
 					isDamaged = true;
 				
-				control.dIsChArGe_lOaN(isDamaged);
+				control.dischargeLoan(isDamaged);
 			
 			case completed:
 				output("Return processing complete");

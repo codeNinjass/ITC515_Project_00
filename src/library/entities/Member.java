@@ -1,3 +1,4 @@
+//import packages
 package library.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -5,25 +6,31 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/*
+Author: Saroj
+Mediator: Anish
+Reviewer: Bednidhi
+*/
+
 @SuppressWarnings("serial")
 public class Member implements Serializable {
 
-	private String LaSt_NaMe;
-	private String FiRsT_NaMe;
-	private String EmAiL_AdDrEsS;
-	private int PhOnE_NuMbEr;
-	private int MeMbEr_Id;
-	private double FiNeS_OwInG;
+	private String lastName;
+	private String firstName;
+	private String emailAddress;
+	private int phoneNumber;
+	private int memberId;
+	private double finesOwing;
 	
 	private Map<Integer, Loan> cUrReNt_lOaNs;
 
 	
-	public Member(String lAsT_nAmE, String fIrSt_nAmE, String eMaIl_aDdReSs, int pHoNe_nUmBeR, int mEmBeR_iD) {
-		this.LaSt_NaMe = lAsT_nAmE;
-		this.FiRsT_NaMe = fIrSt_nAmE;
-		this.EmAiL_AdDrEsS = eMaIl_aDdReSs;
-		this.PhOnE_NuMbEr = pHoNe_nUmBeR;
-		this.MeMbEr_Id = mEmBeR_iD;
+	public Member(String lastName, String firstName, String emailAddress, int phoneNumber, int memberId) {
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.emailAddress = emailAddress;
+		this.phoneNumber = phoneNumber;
+		this.memberId = memberId;
 		
 		this.cUrReNt_lOaNs = new HashMap<>();
 	}
@@ -31,28 +38,33 @@ public class Member implements Serializable {
 	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("Member:  ").append(MeMbEr_Id).append("\n")
-		  .append("  Name:  ").append(LaSt_NaMe).append(", ").append(FiRsT_NaMe).append("\n")
-		  .append("  Email: ").append(EmAiL_AdDrEsS).append("\n")
-		  .append("  Phone: ").append(PhOnE_NuMbEr)
+		sb.append("Member:  ").append(
+				memberId).append("\n")
+		  .append("  Name:  ").append(
+						lastName).append(", ").append(
+						firstName).append("\n")
+		  .append("  Email: ").append(
+						emailAddress).append("\n")
+		  .append("  Phone: ").append(
+						phoneNumber)
 		  .append("\n")
-		  .append(String.format("  Fines Owed :  $%.2f", FiNeS_OwInG))
+		  .append(String.format("  Fines Owed :  $%.2f", finesOwing))
 		  .append("\n");
 		
-		for (Loan LoAn : cUrReNt_lOaNs.values()) {
-			sb.append(LoAn).append("\n");
+		for (Loan loan : currentLoans.values()) {
+			sb.append(loan).append("\n");
 		}		  
 		return sb.toString();
 	}
 
 	
-	public int GeT_ID() {
-		return MeMbEr_Id;
+	public int getId() {
+		return memberId;
 	}
 
 	
 	public List<Loan> GeT_LoAnS() {
-		return new ArrayList<Loan>(cUrReNt_lOaNs.values());
+		return new ArrayList<Loan>(currentLoans.values());
 	}
 
 	
@@ -62,13 +74,13 @@ public class Member implements Serializable {
 
 	
 	public double FiNeS_OwEd() {
-		return FiNeS_OwInG;
+		return finesOwing;
 	}
 
 	
-	public void TaKe_OuT_LoAn(Loan lOaN) {
-		if (!cUrReNt_lOaNs.containsKey(lOaN.GeT_Id())) 
-			cUrReNt_lOaNs.put(lOaN.GeT_Id(), lOaN);
+	public void TaKe_OuT_LoAn(Loan loan) {
+		if (!currentloans.containsKey(loan.getId())) 
+			currentLoans.put(loan.getId(), loan);
 		
 		else 
 			throw new RuntimeException("Duplicate loan added to member");
@@ -77,17 +89,17 @@ public class Member implements Serializable {
 
 	
 	public String GeT_LaSt_NaMe() {
-		return LaSt_NaMe;
+		return lastName;
 	}
 
 	
 	public String GeT_FiRsT_NaMe() {
-		return FiRsT_NaMe;
+		return firstName;
 	}
 
 
 	public void AdD_FiNe(double fine) {
-		FiNeS_OwInG += fine;
+		finesOwing += fine;
 	}
 	
 	public double PaY_FiNe(double AmOuNt) {
@@ -95,20 +107,20 @@ public class Member implements Serializable {
 			throw new RuntimeException("Member.payFine: amount must be positive");
 		
 		double change = 0;
-		if (AmOuNt > FiNeS_OwInG) {
-			change = AmOuNt - FiNeS_OwInG;
-			FiNeS_OwInG = 0;
+		if (AmOuNt > finesOwing) {
+			change = AmOuNt - finesOwing;
+			finesOwing = 0;
 		}
 		else 
-			FiNeS_OwInG -= AmOuNt;
+			finesOwing -= AmOuNt;
 		
 		return change;
 	}
 
 
-	public void dIsChArGeLoAn(Loan LoAn) {
-		if (cUrReNt_lOaNs.containsKey(LoAn.GeT_Id())) 
-			cUrReNt_lOaNs.remove(LoAn.GeT_Id());
+	public void dIsChArGeLoAn(Loan loan) {
+		if (currentLoans.containsKey(loan.getId())) 
+			currentLoans.remove(loan.getId());
 		
 		else 
 			throw new RuntimeException("No such loan held by member");
