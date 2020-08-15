@@ -1,26 +1,26 @@
-package library.fixbook;
-import java.util.Scanner;
+package library.fixbook;	// define package name
+import java.util.Scanner;	//Import scanner class
 
 
-public class FixBookUI {
+public class FixBookUI {  // define class called FixBookUI
 
-	public static enum uI_sTaTe { INITIALISED, READY, FIXING, COMPLETED };
+	public static enum u_sTaTe { INITIALISED, READY, FIXING, COMPLETED };
 
-	private fIX_bOOK_cONTROL CoNtRoL;
-	private Scanner InPuT;
-	private uI_sTaTe StAtE;
+	private FixBookControl control; //using standard naming convention for variable name and its data type 
+	private Scanner input;	//usiing standard naming convention for variable name and its data type
+	private UiState state;	// using standard naming convention for variable name and its data type
 
 	
-	public FixBookUI(fIX_bOOK_cONTROL CoNtRoL) {
-		this.CoNtRoL = CoNtRoL;
-		InPuT = new Scanner(System.in);
-		StAtE = uI_sTaTe.INITIALISED;
-		CoNtRoL.SeT_Ui(this);
+	public FixBookUI(FixBookControl control) {
+		this.control = control;
+		input = new Scanner(System.in);
+		state = UiState.INITIALISED;
+		control.SeT_Ui(this);
 	}
 
 
-	public void SeT_StAtE(uI_sTaTe state) {
-		this.StAtE = state;
+	public void SeT_StAtE(UiState state) {
+		this.state = state;
 	}
 
 	
@@ -29,12 +29,12 @@ public class FixBookUI {
 		
 		while (true) {
 			
-			switch (StAtE) {
+			switch (state) {
 			
 			case READY:
 				String BoOk_EnTrY_StRiNg = iNpUt("Scan Book (<enter> completes): ");
 				if (BoOk_EnTrY_StRiNg.length() == 0) 
-					CoNtRoL.SCannING_COMplete();
+					control.SCannING_COMplete();
 				
 				else {
 					try {
@@ -53,7 +53,7 @@ public class FixBookUI {
 				if (AnS.toUpperCase().equals("Y")) 
 					FiX = true;
 				
-				CoNtRoL.FiX_BoOk(FiX);
+				control.FiX_BoOk(FiX);
 				break;
 								
 			case COMPLETED:
@@ -62,7 +62,7 @@ public class FixBookUI {
 			
 			default:
 				OuTpUt("Unhandled state");
-				throw new RuntimeException("FixBookUI : unhandled state :" + StAtE);			
+				throw new RuntimeException("FixBookUI : unhandled state :" + state);			
 			
 			}		
 		}
