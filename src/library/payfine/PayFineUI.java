@@ -2,30 +2,30 @@ package library.payfine;
 import java.util.Scanner;
 
 
-public class PayFineUI {
+public class PayFineUI { // define class name called PayFineUI
 
 
 	public static enum UiState { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
 
-	private PayFineControl control;
-	private Scanner input;
-	private UiState state;
+	private PayFineControl control; // standard naming convention for variable name and its data type
+	private Scanner input; // standard naming convention for variable name and its data type
+	private UiState state;// standard naming convention for variable name and its data type 
 
 	
-	public PayFineUI(PayFineControl control) {
+	public PayFineUI(PayFineControl control) { 
 		this.control = control;
 		input = new Scanner(System.in);
 		state = UiState.INITIALISED;
-		control.SeT_uI(this);
+		control.setUi(this);
 	}
 	
 	
-	public void SeT_StAtE(UiState state) {
+	public void setState(UiState state) { //Change standard function name from SeT_StAtE --> setState
 		this.state = state;
 	}
 
 
-	public void RuN() {
+	public void run() { //Change standard function name from RuN --> run
 		output("Pay Fine Use Case UI\n");
 		
 		while (true) {
@@ -33,14 +33,14 @@ public class PayFineUI {
 			switch (state) {
 			
 			case READY:
-				String Mem_Str = input("Swipe member card (press <enter> to cancel): ");
-				if (Mem_Str.length() == 0) {
+				String memStr = input("Swipe member card (press <enter> to cancel): ");
+				if (memStr.length() == 0) {
 					control.CaNcEl();
 					break;
 				}
 				try {
-					int Member_ID = Integer.valueOf(Mem_Str).intValue();
-					control.CaRd_sWiPeD(Member_ID);
+					int memberId = Integer.valueOf(memStr).intValue();
+					control.CaRd_sWiPeD(memberId);
 				}
 				catch (NumberFormatException e) {
 					output("Invalid memberId");
@@ -48,21 +48,21 @@ public class PayFineUI {
 				break;
 				
 			case PAYING:
-				double AmouNT = 0;
-				String Amt_Str = input("Enter amount (<Enter> cancels) : ");
-				if (Amt_Str.length() == 0) {
+				double amount = 0;
+				String amtStr = input("Enter amount (<Enter> cancels) : ");
+				if (amtStr.length() == 0) {
 					control.CaNcEl();
 					break;
 				}
 				try {
-					AmouNT = Double.valueOf(Amt_Str).doubleValue();
+					amount = Double.valueOf(amtStr).doubleValue();
 				}
 				catch (NumberFormatException e) {}
-				if (AmouNT <= 0) {
-					output("Amount must be positive");
+				if (amount <= 0) {
+					output("amount must be positive");
 					break;
 				}
-				control.PaY_FiNe(AmouNT);
+				control.PaY_FiNe(amount);
 				break;
 								
 			case CANCELLED:
@@ -93,7 +93,7 @@ public class PayFineUI {
 	}	
 			
 
-	public void DiSplAY(Object object) {
+	public void display(Object object) { //Change standard function name from DiSplAY --> display
 		output(object);
 	}
 
