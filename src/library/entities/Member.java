@@ -22,7 +22,7 @@ public class Member implements Serializable {
 	private int memberId;
 	private double finesOwing;
 	
-	private Map<Integer, Loan> cUrReNt_lOaNs;
+	private Map<Integer, Loan> currentLoans;
 
 	
 	public Member(String lastName, String firstName, String emailAddress, int phoneNumber, int memberId) {
@@ -32,7 +32,7 @@ public class Member implements Serializable {
 		this.phoneNumber = phoneNumber;
 		this.memberId = memberId;
 		
-		this.cUrReNt_lOaNs = new HashMap<>();
+		this.currentLoans = new HashMap<>();
 	}
 
 	
@@ -63,13 +63,13 @@ public class Member implements Serializable {
 	}
 
 	
-	public List<Loan> GeT_LoAnS() {
+	public List<Loan> getLoans() {
 		return new ArrayList<Loan>(currentLoans.values());
 	}
 
 	
-	public int gEt_nUmBeR_Of_CuRrEnT_LoAnS() {
-		return cUrReNt_lOaNs.size();
+	public int getNumberOfCurrentLoans() {
+		return currentLoans.size();
 	}
 
 	
@@ -78,7 +78,7 @@ public class Member implements Serializable {
 	}
 
 	
-	public void TaKe_OuT_LoAn(Loan loan) {
+	public void takeOutLoan(Loan loan) {
 		if (!currentloans.containsKey(loan.getId())) 
 			currentLoans.put(loan.getId(), loan);
 		
@@ -88,37 +88,37 @@ public class Member implements Serializable {
 	}
 
 	
-	public String GeT_LaSt_NaMe() {
+	public String getLastName() {
 		return lastName;
 	}
 
 	
-	public String GeT_FiRsT_NaMe() {
+	public String getFirstName() {
 		return firstName;
 	}
 
 
-	public void AdD_FiNe(double fine) {
+	public void addFine(double fine) {
 		finesOwing += fine;
 	}
 	
-	public double PaY_FiNe(double AmOuNt) {
-		if (AmOuNt < 0) 
+	public double payFine(double amount) {
+		if (amount < 0) 
 			throw new RuntimeException("Member.payFine: amount must be positive");
 		
 		double change = 0;
-		if (AmOuNt > finesOwing) {
-			change = AmOuNt - finesOwing;
+		if (amount > finesOwing) {
+			change = amount - finesOwing;
 			finesOwing = 0;
 		}
 		else 
-			finesOwing -= AmOuNt;
+			finesOwing -= amount;
 		
 		return change;
 	}
 
 
-	public void dIsChArGeLoAn(Loan loan) {
+	public void dischargeLoan(Loan loan) {
 		if (currentLoans.containsKey(loan.getId())) 
 			currentLoans.remove(loan.getId());
 		
