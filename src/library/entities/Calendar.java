@@ -19,7 +19,7 @@ public class Calendar {
 		calendar = java.util.Calendar.getInstance();
 	}
 	
-	public static Calendar gEtInStAnCe() {
+	public static Calendar getInstance() {
 		if (self == null) {
 			self = new Calendar();
 		}
@@ -65,9 +65,9 @@ public class Calendar {
 	
 	public synchronized long getDaysDifference(Date targetDate) {
 		
-		long Diff_Millis = getDate().getTime() - targetDate.getTime();
-	    long Diff_Days = TimeUnit.DAYS.convert(Diff_Millis, TimeUnit.MILLISECONDS);
-	    return Diff_Days;
+		long diffMillis = getDate().getTime() - targetDate.getTime();
+	    long diffDays = TimeUnit.DAYS.convert(diffMillis, TimeUnit.MILLISECONDS);
+	    return diffDays;
 	}
 
 }
