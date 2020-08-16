@@ -1,0 +1,220 @@
+[1mdiff --git a/src/library/fixbook/FixBookUI.java b/src/library/fixbook/FixBookUI.java[m
+[1mindex 1521621..57d9bf0 100644[m
+[1m--- a/src/library/fixbook/FixBookUI.java[m
+[1m+++ b/src/library/fixbook/FixBookUI.java[m
+[36m@@ -10,6 +10,7 @@[m [mpublic class FixBookUI {  // define class called FixBookUI[m
+ 	private Scanner input;	//usiing standard naming convention for variable name and its data type[m
+ 	private UiState state;	// using standard naming convention for variable name and its data type[m
+ [m
+[32m+[m[41m[m
+ 	[m
+ 	public FixBookUI(FixBookControl control) {[m
+ 		this.control = control;[m
+[36m@@ -19,12 +20,12 @@[m [mpublic class FixBookUI {  // define class called FixBookUI[m
+ 	}[m
+ [m
+ [m
+[31m-	public void SeT_StAtE(UiState state) {[m
+[32m+[m	[32mpublic void setState(UiState state) {		//Change function name to universal adopted form. Set_StAte --> setState[m[41m[m
+ 		this.state = state;[m
+ 	}[m
+ [m
+ 	[m
+[31m-	public void RuN() {[m
+[32m+[m	[32mpublic void run() {		//Change function name to universal adopted form. RuN --> run[m[41m[m
+ 		OuTpUt("Fix Book Use Case UI\n");[m
+ 		[m
+ 		while (true) {[m
+[36m@@ -42,13 +43,13 @@[m [mpublic class FixBookUI {  // define class called FixBookUI[m
+ 						CoNtRoL.BoOk_ScAnNeD(BoOk_Id);[m
+ 					}[m
+ 					catch (NumberFormatException e) {[m
+[31m-						OuTpUt("Invalid bookId");[m
+[32m+[m						[32moutput("Invalid bookId");	//OuTpUt --> output[m[41m[m
+ 					}[m
+ 				}[m
+ 				break;	[m
+ 				[m
+ 			case FIXING:[m
+[31m-				String AnS = iNpUt("Fix Book? (Y/N) : ");[m
+[32m+[m				[32mString AnS = input("Fix Book? (Y/N) : ");	//iNpUt --> input[m[41m[m
+ 				boolean FiX = false;[m
+ 				if (AnS.toUpperCase().equals("Y")) [m
+ 					FiX = true;[m
+[36m@@ -57,11 +58,11 @@[m [mpublic class FixBookUI {  // define class called FixBookUI[m
+ 				break;[m
+ 								[m
+ 			case COMPLETED:[m
+[31m-				OuTpUt("Fixing process complete");[m
+[32m+[m				[32moutput("Fixing process complete");	//OuTpUt --> output[m[41m[m
+ 				return;[m
+ 			[m
+ 			default:[m
+[31m-				OuTpUt("Unhandled state");[m
+[32m+[m				[32moutput("Unhandled state");		//OuTpUt --> output[m[41m[m
+ 				throw new RuntimeException("FixBookUI : unhandled state :" + state);			[m
+ 			[m
+ 			}		[m
+[36m@@ -70,19 +71,19 @@[m [mpublic class FixBookUI {  // define class called FixBookUI[m
+ 	}[m
+ [m
+ 	[m
+[31m-	private String iNpUt(String prompt) {[m
+[32m+[m	[32mprivate String input(String prompt) {		//change function name to universal addopted naming form. iNpUt -->input[m[41m[m
+ 		System.out.print(prompt);[m
+[31m-		return InPuT.nextLine();[m
+[32m+[m		[32mreturn input.nextLine();[m[41m[m
+ 	}	[m
+ 		[m
+ 		[m
+[31m-	private void OuTpUt(Object object) {[m
+[32m+[m	[32mprivate void output(Object object) {		// change function name to universal addopted naming form. OutpUt -->output[m[41m[m
+ 		System.out.println(object);[m
+ 	}[m
+ 	[m
+ [m
+[31m-	public void dIsPlAy(Object object) {[m
+[31m-		OuTpUt(object);[m
+[32m+[m	[32mpublic void display(Object object) {		//change function name to universal addopted naming form. dIsPlAy -->display[m[41m[m
+[32m+[m		[32moutput(object);[m[41m[m
+ 	}[m
+ 	[m
+ 	[m
+[1mdiff --git a/src/library/returnBook/ReturnBookUI.java b/src/library/returnBook/ReturnBookUI.java[m
+[1mindex ec4950c..4b645c5 100644[m
+[1m--- a/src/library/returnBook/ReturnBookUI.java[m
+[1m+++ b/src/library/returnBook/ReturnBookUI.java[m
+[36m@@ -1,94 +1,87 @@[m
+[31m-//import packages [m
+ package library.returnBook;[m
+ import java.util.Scanner;[m
+ [m
+[31m-/*[m
+[31m-Author: Saroj[m
+[31m-Mediator: Anish[m
+[31m-Reviewer: Bednidhi[m
+[31m-*/[m
+ [m
+ public class ReturnBookUI {[m
+ [m
+[31m-	// static class[m
+[31m-	public static enum uiState { initialised, ready, inspecting, completed };[m
+[32m+[m	[32mpublic static enum uI_sTaTe { INITIALISED, READY, INSPECTING, COMPLETED };[m[41m[m
+ [m
+[31m-	private returnBookControl control;[m
+[31m-	private Scanner input;[m
+[31m-	private uiState state;[m
+[32m+[m	[32mprivate rETURN_bOOK_cONTROL CoNtRoL;[m[41m[m
+[32m+[m	[32mprivate Scanner iNpUt;[m[41m[m
+[32m+[m	[32mprivate uI_sTaTe StATe;[m[41m[m
+ [m
+ 	[m
+[31m-	public ReturnBookUI(returnBookControl control) {[m
+[31m-		this.control = control;[m
+[31m-		input = new Scanner(System.in);[m
+[31m-		state = uiState.initialised;[m
+[31m-		control.setUi(this);[m
+[32m+[m	[32mpublic ReturnBookUI(rETURN_bOOK_cONTROL cOnTrOL) {[m[41m[m
+[32m+[m		[32mthis.CoNtRoL = cOnTrOL;[m[41m[m
+[32m+[m		[32miNpUt = new Scanner(System.in);[m[41m[m
+[32m+[m		[32mStATe = uI_sTaTe.INITIALISED;[m[41m[m
+[32m+[m		[32mcOnTrOL.sEt_uI(this);[m[41m[m
+ 	}[m
+ [m
+ [m
+[31m-	public void run() {		[m
+[31m-		output("Return Book Use Case UI\n");[m
+[32m+[m	[32mpublic void RuN() {[m[41m		[m
+[32m+[m		[32moUtPuT("Return Book Use Case UI\n");[m[41m[m
+ 		[m
+ 		while (true) {[m
+ 			[m
+[31m-			switch (state) {[m
+[32m+[m			[32mswitch (StATe) {[m[41m[m
+ 			[m
+[31m-			case initialised:[m
+[32m+[m			[32mcase INITIALISED:[m[41m[m
+ 				break;[m
+ 				[m
+[31m-			case ready:[m
+[31m-				String bookInputString = input("Scan Book (<enter> completes): ");[m
+[31m-				if (bookInputString.length() == 0) [m
+[31m-					control.sCaNnInG_cOmPlEtE();[m
+[32m+[m			[32mcase READY:[m[41m[m
+[32m+[m				[32mString BoOk_InPuT_StRiNg = iNpUt("Scan Book (<enter> completes): ");[m[41m[m
+[32m+[m				[32mif (BoOk_InPuT_StRiNg.length() == 0)[m[41m [m
+[32m+[m					[32mCoNtRoL.sCaNnInG_cOmPlEtE();[m[41m[m
+ 				[m
+ 				else {[m
+ 					try {[m
+[31m-						int bookId = Integer.valueOf(bookInputString).intValue();[m
+[31m-						control.bOoK_sCaNnEd(bookId);[m
+[32m+[m						[32mint Book_Id = Integer.valueOf(BoOk_InPuT_StRiNg).intValue();[m[41m[m
+[32m+[m						[32mCoNtRoL.bOoK_sCaNnEd(Book_Id);[m[41m[m
+ 					}[m
+ 					catch (NumberFormatException e) {[m
+[31m-						output("Invalid bookId");[m
+[32m+[m						[32moUtPuT("Invalid bookId");[m[41m[m
+ 					}					[m
+ 				}[m
+ 				break;				[m
+ 				[m
+[31m-			case inspecting:[m
+[31m-				String ans = input("Is book damaged? (Y/N): ");[m
+[31m-				boolean isDamaged = false;[m
+[31m-				if (ans.toUpperCase().equals("Y")) 					[m
+[31m-					isDamaged = true;[m
+[32m+[m			[32mcase INSPECTING:[m[41m[m
+[32m+[m				[32mString AnS = iNpUt("Is book damaged? (Y/N): ");[m[41m[m
+[32m+[m				[32mboolean Is_DAmAgEd = false;[m[41m[m
+[32m+[m				[32mif (AnS.toUpperCase().equals("Y"))[m[41m 					[m
+[32m+[m					[32mIs_DAmAgEd = true;[m[41m[m
+ 				[m
+[31m-				control.dIsChArGe_lOaN(isDamaged);[m
+[32m+[m				[32mCoNtRoL.dIsChArGe_lOaN(Is_DAmAgEd);[m[41m[m
+ 			[m
+[31m-			case completed:[m
+[31m-				output("Return processing complete");[m
+[32m+[m			[32mcase COMPLETED:[m[41m[m
+[32m+[m				[32moUtPuT("Return processing complete");[m[41m[m
+ 				return;[m
+ 			[m
+ 			default:[m
+[31m-				output("Unhandled state");[m
+[31m-				throw new RuntimeException("ReturnBookUI : unhandled state :" + state);			[m
+[32m+[m				[32moUtPuT("Unhandled state");[m[41m[m
+[32m+[m				[32mthrow new RuntimeException("ReturnBookUI : unhandled state :" + StATe);[m[41m			[m
+ 			}[m
+ 		}[m
+ 	}[m
+ [m
+ 	[m
+[31m-	private String input(String prompt) {[m
+[31m-		System.out.print(prompt);[m
+[31m-		return input.nextLine();[m
+[32m+[m	[32mprivate String iNpUt(String PrOmPt) {[m[41m[m
+[32m+[m		[32mSystem.out.print(PrOmPt);[m[41m[m
+[32m+[m		[32mreturn iNpUt.nextLine();[m[41m[m
+ 	}	[m
+ 		[m
+ 		[m
+[31m-	private void output(Object object) {[m
+[31m-		System.out.println(object);[m
+[32m+[m	[32mprivate void oUtPuT(Object ObJeCt) {[m[41m[m
+[32m+[m		[32mSystem.out.println(ObJeCt);[m[41m[m
+ 	}[m
+ 	[m
+ 			[m
+[31m-	public void display(Object object) {[m
+[31m-		output(object);[m
+[32m+[m	[32mpublic void DiSpLaY(Object object) {[m[41m[m
+[32m+[m		[32moUtPuT(object);[m[41m[m
+ 	}[m
+ 	[m
+[31m-	public void setState(uiState state) {[m
+[31m-		this.state = state;[m
+[32m+[m	[32mpublic void sEt_sTaTe(uI_sTaTe state) {[m[41m[m
+[32m+[m		[32mthis.StATe = state;[m[41m[m
+ 	}[m
+ [m
+ 	[m
