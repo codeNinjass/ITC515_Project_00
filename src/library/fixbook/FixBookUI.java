@@ -10,6 +10,7 @@ public class FixBookUI {  // define class called FixBookUI
 	private Scanner input;	//usiing standard naming convention for variable name and its data type
 	private UiState state;	// using standard naming convention for variable name and its data type
 
+
 	
 	public FixBookUI(FixBookControl control) {
 		this.control = control;
@@ -19,12 +20,12 @@ public class FixBookUI {  // define class called FixBookUI
 	}
 
 
-	public void SeT_StAtE(UiState state) {
+	public void setState(UiState state) {		//Change function name to universal adopted form. Set_StAte --> setState
 		this.state = state;
 	}
 
 	
-	public void RuN() {
+	public void run() {		//Change function name to universal adopted form. RuN --> run
 		OuTpUt("Fix Book Use Case UI\n");
 		
 		while (true) {
@@ -42,13 +43,13 @@ public class FixBookUI {  // define class called FixBookUI
 						CoNtRoL.BoOk_ScAnNeD(BoOk_Id);
 					}
 					catch (NumberFormatException e) {
-						OuTpUt("Invalid bookId");
+						output("Invalid bookId");	//OuTpUt --> output
 					}
 				}
 				break;	
 				
 			case FIXING:
-				String AnS = iNpUt("Fix Book? (Y/N) : ");
+				String AnS = input("Fix Book? (Y/N) : ");	//iNpUt --> input
 				boolean FiX = false;
 				if (AnS.toUpperCase().equals("Y")) 
 					FiX = true;
@@ -57,11 +58,11 @@ public class FixBookUI {  // define class called FixBookUI
 				break;
 								
 			case COMPLETED:
-				OuTpUt("Fixing process complete");
+				output("Fixing process complete");	//OuTpUt --> output
 				return;
 			
 			default:
-				OuTpUt("Unhandled state");
+				output("Unhandled state");		//OuTpUt --> output
 				throw new RuntimeException("FixBookUI : unhandled state :" + state);			
 			
 			}		
@@ -70,19 +71,19 @@ public class FixBookUI {  // define class called FixBookUI
 	}
 
 	
-	private String iNpUt(String prompt) {
+	private String input(String prompt) {		//change function name to universal addopted naming form. iNpUt -->input
 		System.out.print(prompt);
-		return InPuT.nextLine();
+		return input.nextLine();
 	}	
 		
 		
-	private void OuTpUt(Object object) {
+	private void output(Object object) {		// change function name to universal addopted naming form. OutpUt -->output
 		System.out.println(object);
 	}
 	
 
-	public void dIsPlAy(Object object) {
-		OuTpUt(object);
+	public void display(Object object) {		//change function name to universal addopted naming form. dIsPlAy -->display
+		output(object);
 	}
 	
 	
