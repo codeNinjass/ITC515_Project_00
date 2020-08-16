@@ -35,7 +35,7 @@ public class Member implements Serializable {
 		this.currentLoans = new HashMap<>();
 	}
 
-	
+	// helper function
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Member:  ").append(
@@ -57,7 +57,7 @@ public class Member implements Serializable {
 		return sb.toString();
 	}
 
-	
+	// getter
 	public int getId() {
 		return memberId;
 	}
@@ -67,23 +67,24 @@ public class Member implements Serializable {
 		return new ArrayList<Loan>(currentLoans.values());
 	}
 
-	
+	// getter
 	public int getNumberOfCurrentLoans() {
 		return currentLoans.size();
 	}
 
 	
-	public double FiNeS_OwEd() {
+	public double finesOwned() {
 		return finesOwing;
 	}
 
 	
 	public void takeOutLoan(Loan loan) {
-		if (!currentloans.containsKey(loan.getId())) 
+		if (!currentLoans.containsKey(loan.getId())) {
 			currentLoans.put(loan.getId(), loan);
-		
-		else 
+		}
+		else {
 			throw new RuntimeException("Duplicate loan added to member");
+		}
 				
 	}
 
