@@ -20,17 +20,17 @@ public class BorrowBookUI {
 	private UIState state;
 
 	
-	public BorrowBookUI(bORROW_bOOK_cONTROL control) {
-		this.CoNtRoL = control;
-		InPuT = new Scanner(System.in);
-		StaTe = uI_STaTe.INITIALISED;
-		control.SeT_Ui(this);
+	public BorrowBookUI(BorrowBookControl control) {
+		this.control = control;  //changed the case fo control
+		this.input = new Scanner(System.in);  //added [this.]
+		this.state = UIState.INITIALISED;  //added [this.]
+		this.control.setUI(this);  //added [this.]
 	}
 
 	
-	private String iNpUT(String PrOmPt) {
-		System.out.print(PrOmPt);
-		return InPuT.nextLine();
+	private String input(String prompt) {  //changed the lettering od prompt
+		System.out.print(prompt);
+		return this.input.nextLine();  //[this.] 
 	}	
 		
 		
