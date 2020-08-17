@@ -26,9 +26,9 @@ public class Library implements Serializable {
 	private static final double damageFee = 2.0;
 	
 	private static Library self;		//SeLf --> self
-	private int bookID;		//bOoK_Id --> bookID
-	private int memberID;		//mEmBeR_Id-->memberID
-	private int loanID;		//lOaN_Id-->loanID
+	private int bookId;		//bOoK_Id --> bookId
+	private int memberId;		//mEmBeR_Id-->memberId
+	private int loanId;		//lOaN_Id-->loanId
 	private Date loanDate;			//lOaN_DaTe-->loanDate
 	
 	private Map<Integer, Book> catalog;		//CaTaLoG --> catalog
