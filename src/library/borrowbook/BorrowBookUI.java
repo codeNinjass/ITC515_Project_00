@@ -34,13 +34,13 @@ public class BorrowBookUI {
 	}	
 		
 		
-	private void OuTpUt(Object ObJeCt) {
-		System.out.println(ObJeCt);
+	private void output(Object object) { //changed to output
+		System.out.println(object);
 	}
 	
 			
-	public void SeT_StAtE(uI_STaTe StAtE) {
-		this.StaTe = StAtE;
+	public void setState(UIState state) { //changed to setState
+		this.state = state; //
 	}
 
 	
