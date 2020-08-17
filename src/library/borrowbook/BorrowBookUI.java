@@ -56,17 +56,17 @@ public class BorrowBookUI {
 				return;
 
 				
-			case READY: //WORK ON THIS
-				String MEM_STR = iNpUT("Swipe member card (press <enter> to cancel): ");
-				if (MEM_STR.length() == 0) {
+			case READY: 
+				String memStr = input("Swipe member card (press <enter> to cancel): ");//MEM_STR->memStr..input
+				if (memStr.length() == 0) {
 					this.control.cancel();//CoNtRoL.CaNcEl
 					break;
 				}
 				try {
-					int MeMbEr_Id = Integer.valueOf(MEM_STR).intValue();
-					CoNtRoL.SwIpEd(MeMbEr_Id);
+					int memberId = Integer.valueOf(memStr).intValue(); //MeMbEr_Id->memberId
+					this.control.swipedmemStr(memberId); //CoNtRoL.SwIpEd(MeMbEr_Id);
 				}
-				catch (NumberFormatException e) {
+				catch (NumberFormatException e) { //START HERE -> and check SwipedMemStr above
 					OuTpUt("Invalid Member Id");
 				}
 				break;
