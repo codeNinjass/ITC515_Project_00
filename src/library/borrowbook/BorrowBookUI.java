@@ -44,15 +44,15 @@ public class BorrowBookUI {
 	}
 
 	
-	public void RuN() {
-		OuTpUt("Borrow Book Use Case UI\n");
+	public void run() { //RuN to run
+		this.output("Borrow Book Use Case UI\n"); //OuTpUt
 		
 		while (true) {
 			
-			switch (StaTe) {			
+			switch (this.state) {	//StaTe		
 			
 			case CANCELLED:
-				OuTpUt("Borrowing Cancelled");
+				this.output("Borrowing Cancelled"); //OuTpUt
 				return;
 
 				
