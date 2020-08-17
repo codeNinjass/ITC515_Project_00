@@ -44,7 +44,7 @@ public class Library implements Serializable {
 		loans = new HashMap<>();		//LoAnS --> loans
 		currentLoans = new HashMap<>();		//CuRrEnT_LoAnS-->currentLoans
 		damagedBooks = new HashMap<>();		//DaMaGeD_BoOkS -->damagedBooks
-		bookID = 1;			//bOoK_Id --> bookID
+		bookId = 1;			//bOoK_Id --> bookId
 		memberID = 1;		//mEmBeR_Id --> memberID		
 		loanID = 1;			//lOaN_Id --> loanID		
 	}
