@@ -56,10 +56,10 @@ public class BorrowBookUI {
 				return;
 
 				
-			case READY:
+			case READY: //WORK ON THIS
 				String MEM_STR = iNpUT("Swipe member card (press <enter> to cancel): ");
 				if (MEM_STR.length() == 0) {
-					CoNtRoL.CaNcEl();
+					this.control.cancel();//CoNtRoL.CaNcEl
 					break;
 				}
 				try {
