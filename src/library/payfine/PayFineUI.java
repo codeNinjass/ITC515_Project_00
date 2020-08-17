@@ -36,7 +36,7 @@ public class PayFineUI { // define class name called PayFineUI
 			case READY:
 				String memStr = input("Swipe member card (press <enter> to cancel): ");
 				if (memStr.length() == 0) {
-					control.CaNcEl();
+					control.cancel();
 					break;
 				}
 				try {
@@ -52,7 +52,7 @@ public class PayFineUI { // define class name called PayFineUI
 				double amount = 0;
 				String amtStr = input("Enter amount (<Enter> cancels) : ");
 				if (amtStr.length() == 0) {
-					control.CaNcEl();
+					control.cancel();
 					break;
 				}
 				try {
