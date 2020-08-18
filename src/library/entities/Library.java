@@ -85,7 +85,7 @@ public class Library implements Serializable {
 	}
 
 	
-	public int getBookID() {		//gEt_BoOkId-->getBookID
+	public int getBookId() {		//gEt_BoOkId-->getBookId
 		return bookID;		//bOoK_Id-->bookID
 	}
 	
