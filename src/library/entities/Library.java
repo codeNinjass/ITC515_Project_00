@@ -100,7 +100,7 @@ public class Library implements Serializable {
 	}
 
 	
-	private int getNextMemberID() {		//gEt_NeXt_MeMbEr_Id-->getNextMemberID
+	private int getNextMemberId() {		//gEt_NeXt_MeMbEr_Id-->getNextMemberId
 		return memberID++;		//mEmBeR_Id++-->memberID++
 	}
 
