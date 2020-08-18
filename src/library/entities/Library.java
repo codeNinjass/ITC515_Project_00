@@ -105,7 +105,7 @@ public class Library implements Serializable {
 	}
 
 //the below code is not updated................	
-	private int gEt_NeXt_LoAn_Id() {
+	private int getNextLoanId() {		//gEt_NeXt_LoAn_Id --> getNextLoanId
 		return lOaN_Id++;
 	}
 
