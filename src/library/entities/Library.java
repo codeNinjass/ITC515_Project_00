@@ -90,7 +90,7 @@ public class Library implements Serializable {
 	}
 	
 	
-	public int getMemberID() {		//gEt_MeMbEr_Id-->getMemberID
+	public int getMemberId() {		//gEt_MeMbEr_Id-->getMemberId
 		return memberID;		//mEmBeR_Id-->memberID
 	}
 	
