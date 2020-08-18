@@ -95,7 +95,7 @@ public class Library implements Serializable {
 	}
 	
 	
-	private int getNextBookID() {		//gEt_NeXt_BoOk_Id-->getNextBookID
+	private int getNextBookId() {		//gEt_NeXt_BoOk_Id-->getNextBookId
 		return bookID++;		//bOoK_Id-->bookID
 	}
 
