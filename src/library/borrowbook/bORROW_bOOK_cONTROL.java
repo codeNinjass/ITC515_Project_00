@@ -7,11 +7,11 @@ import library.entities.Library;
 import library.entities.Loan;
 import library.entities.Member;
 
-public class bORROW_bOOK_cONTROL {
+public class BorrowBookControl {  //bORROW_bOOK_cONTROL
 	
-	private BorrowBookUI uI;
+	private BorrowBookUI UI; //uI
 	
-	private Library lIbRaRy;
+	private Library library; //lIbRaRy
 	private Member mEmBeR;
 	private enum CONTROL_STATE { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };
 	private CONTROL_STATE sTaTe;
