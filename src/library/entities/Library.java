@@ -110,8 +110,8 @@ public class Library implements Serializable {
 	}
 
 	
-	public List<Member> lIsT_MeMbErS() {		
-		return new ArrayList<Member>(MeMbErS.values()); 
+	public List<Member> lIsT_MeMbErS() {		//lIsT_MeMbErS --> listMembers
+		return new ArrayList<Member>(MeMbErS.values()); 		
 	}
 
 
