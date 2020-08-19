@@ -101,12 +101,12 @@ public class Library implements Serializable {
 
 	
 	private int getNextMemberId() {		//gEt_NeXt_MeMbEr_Id-->getNextMemberId
-		return memberID++;		//mEmBeR_Id++-->memberID++
+		return memberId++;		//mEmBeR_Id++-->memberId++
 	}
 
 //the below code is not updated................	
 	private int getNextLoanId() {		//gEt_NeXt_LoAn_Id --> getNextLoanId
-		return lOaN_Id++;
+		return loanId++;				//lOaN_Id -->loanId
 	}
 
 	
