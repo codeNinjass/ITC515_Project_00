@@ -10,6 +10,7 @@ Mediator: Anish
 Reviewer: Bednidhi
 */
 
+// class declaration
 public class ReturnBookControl {
 
 	private ReturnBookUI UI;
@@ -21,7 +22,7 @@ public class ReturnBookControl {
 	
 
 	public ReturnBookControl() {
-		this.library= Library.GeTiNsTaNcE();
+		this.library= Library.getInstance();
 		state = controlState.initialised;
 	}
 	
@@ -35,7 +36,7 @@ public class ReturnBookControl {
 		state = controlStateReady;		
 	}
 
-
+	
 	public void bookScanned(int bookId) {
 		if (!state.equals(controlState.ready)) 
 			throw new RuntimeException("ReturnBookControl: cannot call bookScanned except in READY state");
@@ -71,7 +72,7 @@ public class ReturnBookControl {
 		if (!state.equals(controlState.ready)) 
 			throw new RuntimeException("ReturnBookControl: cannot call scanningComplete except in READY state");
 			
-		Ui.setState(ReturnBookUI.uiState.completed);		
+		UI.setState(ReturnBookUI.uiState.completed);		
 	}
 
 
