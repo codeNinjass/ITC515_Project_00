@@ -120,27 +120,27 @@ public class Library implements Serializable {
 
 
 	public List<Loan> lISt_CuRrEnT_LoAnS() {
-		return new ArrayList<Loan>(CuRrEnT_LoAnS.values());
+		return new ArrayList<Loan>(currentLoans.values());	//CuRrEnT_LoAnS-->currentLoans
 	}
 
 
 	public Member aDd_MeMbEr(String lastName, String firstName, String email, int phoneNo) {		
 		Member member = new Member(lastName, firstName, email, phoneNo, gEt_NeXt_MeMbEr_Id());
-		MeMbErS.put(member.GeT_ID(), member);		
+		members.put(member.GeT_ID(), member);		//MeMbErS-->members		
 		return member;
 	}
 
 	
 	public Book aDd_BoOk(String a, String t, String c) {		
 		Book b = new Book(a, t, c, gEt_NeXt_BoOk_Id());
-		CaTaLoG.put(b.gEtId(), b);		
+		catalog.put(b.gEtId(), b);		//CaTaLoG -->catalog
 		return b;
 	}
 
 	
 	public Member gEt_MeMbEr(int memberId) {
-		if (MeMbErS.containsKey(memberId)) 
-			return MeMbErS.get(memberId);
+		if (members.containsKey(memberId)) 			//MeMbErs --> members
+			return members.get(memberId);
 		return null;
 	}
 
