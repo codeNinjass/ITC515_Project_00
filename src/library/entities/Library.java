@@ -146,19 +146,19 @@ public class Library implements Serializable {
 
 	
 	public Book gEt_BoOk(int bookId) {
-		if (CaTaLoG.containsKey(bookId)) 
-			return CaTaLoG.get(bookId);		
+		if (catalog.containsKey(bookId)) 	//CaTaLoG -->catalog
+			return catalog.get(bookId);		
 		return null;
 	}
 
 	
 	public int gEt_LoAn_LiMiT() {
-		return lOaNlImIt;
+		return loanLimit;			//lOaNlImIt-->loanLimit
 	}
 
 	
 	public boolean cAn_MeMbEr_BoRrOw(Member member) {		
-		if (member.gEt_nUmBeR_Of_CuRrEnT_LoAnS() == lOaNlImIt ) 
+		if (member.gEt_nUmBeR_Of_CuRrEnT_LoAnS() == loanLimit ) 
 			return false;
 				
 		if (member.FiNeS_OwEd() >= maxFinesOwed) 
@@ -172,8 +172,8 @@ public class Library implements Serializable {
 	}
 
 	
-	public int gEt_NuMbEr_Of_LoAnS_ReMaInInG_FoR_MeMbEr(Member MeMbEr) {		
-		return lOaNlImIt - MeMbEr.gEt_nUmBeR_Of_CuRrEnT_LoAnS();
+	public int gEt_NuMbEr_Of_LoAnS_ReMaInInG_FoR_MeMbEr(Member member) {		
+		return loanLimit - member.gEt_nUmBeR_Of_CuRrEnT_LoAnS();		//MeMbEr --> member, lOaNlImIt -->loanLimit
 	}
 
 	
@@ -182,8 +182,8 @@ public class Library implements Serializable {
 		Loan loan = new Loan(gEt_NeXt_LoAn_Id(), book, member, dueDate);
 		member.TaKe_OuT_LoAn(loan);
 		book.BoRrOw();
-		LoAnS.put(loan.GeT_Id(), loan);
-		CuRrEnT_LoAnS.put(book.gEtId(), loan);
+		loans.put(loan.GeT_Id(), loan);			//LoAnS --> loans
+		currentLoans.put(book.gEtId(), loan);		//CuRrEnT_LoAnS--> currentLoans
 		return loan;
 	}
 	
