@@ -189,18 +189,18 @@ public class Library implements Serializable {
 	
 	
 	public Loan GeT_LoAn_By_BoOkId(int bookId) {
-		if (CuRrEnT_LoAnS.containsKey(bookId)) 
-			return CuRrEnT_LoAnS.get(bookId);
+		if (currentLoans.containsKey(bookId)) 			//CuRrEnT_LoAnS --> currentLoans
+			return currentLoans.get(bookId);
 		
 		return null;
 	}
 
 	
-	public double CaLcUlAtE_OvEr_DuE_FiNe(Loan LoAn) {
-		if (LoAn.Is_OvEr_DuE()) {
-			long DaYs_OvEr_DuE = Calendar.gEtInStAnCe().GeT_DaYs_DiFfErEnCe(LoAn.GeT_DuE_DaTe());
-			double fInE = DaYs_OvEr_DuE * FiNe_PeR_DaY;
-			return fInE;
+	public double CaLcUlAtE_OvEr_DuE_FiNe(Loan loan) {
+		if (loan.Is_OvEr_DuE()) {
+			long daysOverDue = Calendar.gEtInStAnCe().GeT_DaYs_DiFfErEnCe(loan.GeT_DuE_DaTe()); 	//DaYs_OvEr_DuE-->daysOverDue
+			double fine = daysOverDue * finePerDay;			//fInE --> fine,	FiNe_PeR_DaY-->finePerDay
+			return fine;
 		}
 		return 0.0;		
 	}
