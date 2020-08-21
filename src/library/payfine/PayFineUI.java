@@ -63,7 +63,7 @@ public class PayFineUI { // define class name called PayFineUI
 					output("amount must be positive");
 					break;
 				}
-				control.PaY_FiNe(amount);
+				control.payFine(amount);
 				break;
 								
 			case CANCELLED:
