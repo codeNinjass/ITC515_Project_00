@@ -104,19 +104,18 @@ public class Library implements Serializable {
 		return memberId++;		//mEmBeR_Id++-->memberId++
 	}
 
-//the below code is not updated................	
 	private int getNextLoanId() {		//gEt_NeXt_LoAn_Id --> getNextLoanId
 		return loanId++;				//lOaN_Id -->loanId
 	}
 
 	
-	public List<Member> lIsT_MeMbErS() {		//lIsT_MeMbErS --> listMembers
-		return new ArrayList<Member>(MeMbErS.values()); 		
+	public List<Member> listMembers() {		//lIsT_MeMbErS --> listMembers
+		return new ArrayList<Member>(members.values()); 	//MeMberS --> members	
 	}
 
 
 	public List<Book> lIsT_BoOkS() {		
-		return new ArrayList<Book>(CaTaLoG.values()); 
+		return new ArrayList<Book>(catalog.values()); 	//CaTaLoG -->catalog
 	}
 
 
