@@ -107,20 +107,20 @@ public class BorrowBookUI {
 				
 				
 			case COMPLETED:
-				OuTpUt("Borrowing Completed");
+				this.output("Borrowing Completed");
 				return;
 	
 				
 			default:
-				OuTpUt("Unhandled state");
+				this.output("Unhandled state");
 				throw new RuntimeException("BorrowBookUI : unhandled state :" + StaTe);			
 			}
 		}		
 	}
 
 
-	public void DiSpLaY(Object object) {
-		OuTpUt(object);		
+	public void display(Object object) { //DiSpLaY->display
+		this.output(object);		
 	}
 
 
