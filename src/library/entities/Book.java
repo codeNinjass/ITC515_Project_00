@@ -1,5 +1,10 @@
+//import packages
 package library.entities;
 import java.io.Serializable;
+
+//Author: Anish Baniya
+//Mediator: Saroj Maharjan
+//Reviewer: Roshan Karki
 
 
 @SuppressWarnings("serial")
