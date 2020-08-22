@@ -95,9 +95,9 @@ public class BorrowBookUI {
 					
 				
 			case FINALISING:
-				String AnS = iNpUT("Commit loans? (Y/N): ");
-				if (AnS.toUpperCase().equals("N")) {
-					CoNtRoL.CaNcEl();
+				String ansQuestion = input("Commit loans? (Y/N): "); //and->ansQuestion
+				if (ansQuetion.toUpperCase().equals("N")) {
+					this.control.cancel();
 					
 				} else {
 					CoNtRoL.CoMmIt_LoAnS();
