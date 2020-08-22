@@ -85,8 +85,8 @@ public class BorrowBookUI {
 					break;
 				}
 				try {
-					int BiD = Integer.valueOf(BoOk_StRiNg_InPuT).intValue();
-					CoNtRoL.ScAnNeD(BiD);
+					int bookId = Integer.valueOf(scanBook).intValue();
+					this.control.scanned(bookId); //CoNtRoL.ScAnNeD->this.control.scanned
 					
 				} catch (NumberFormatException e) {
 					OuTpUt("Invalid Book Id");
