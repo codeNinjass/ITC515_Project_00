@@ -89,7 +89,7 @@ public class BorrowBookUI {
 					this.control.scanned(bookId); //CoNtRoL.ScAnNeD->this.control.scanned
 					
 				} catch (NumberFormatException e) {
-					OuTpUt("Invalid Book Id");
+					this.output("Invalid Book Id"); // added [this] to oUtPut
 				} 
 				break;
 					
