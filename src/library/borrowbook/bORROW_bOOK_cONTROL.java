@@ -12,9 +12,9 @@ public class BorrowBookControl {  //bORROW_bOOK_cONTROL
 	private BorrowBookUI UI; //uI
 	
 	private Library library; //lIbRaRy
-	private Member mEmBeR;
-	private enum CONTROL_STATE { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };
-	private CONTROL_STATE sTaTe;
+	private Member member; //mEmBeR
+	private enum ControlState { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };//CONTROL_STATE->ControlState
+	private ControlState state; //CONTROL_STATE sTaTe->ControlState state
 	
 	private List<Book> pEnDiNg_LiSt;
 	private List<Loan> cOmPlEtEd_LiSt;
