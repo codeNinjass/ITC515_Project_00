@@ -66,15 +66,15 @@ public class BorrowBookUI {
 					int memberId = Integer.valueOf(memStr).intValue(); //MeMbEr_Id->memberId
 					this.control.swipedmemStr(memberId); //CoNtRoL.SwIpEd(MeMbEr_Id);
 				}
-				catch (NumberFormatException e) { //START HERE -> and check SwipedMemStr above
-					OuTpUt("Invalid Member Id");
+				catch (NumberFormatException e) { 
+					this.output("Invalid Member Id");
 				}
 				break;
 
 				
 			case RESTRICTED:
-				iNpUT("Press <any key> to cancel");
-				CoNtRoL.CaNcEl();
+				this.input("Press <any key> to cancel"); //iNpUt
+				this.control.cancel(); //
 				break;
 			
 				
