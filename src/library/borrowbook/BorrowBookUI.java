@@ -100,8 +100,8 @@ public class BorrowBookUI {
 					this.control.cancel();
 					
 				} else {
-					CoNtRoL.CoMmIt_LoAnS();
-					iNpUT("Press <any key> to complete ");
+					this.control.commitLoans(); //CoNtRoL.CoMmIt_LoAnS->this.control.commitLoans
+					this.input("Press <any key> to complete ");
 				}
 				break;
 				
