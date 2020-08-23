@@ -25,9 +25,9 @@ public class BorrowBookControl {  //bORROW_bOOK_cONTROL
 	private Book book; //
 	
 	
-	public bORROW_bOOK_cONTROL() {
-		this.lIbRaRy = Library.GeTiNsTaNcE();
-		sTaTe = CONTROL_STATE.INITIALISED;
+	public BorrowBookControl() { //bORROW_bOOK_cONTROL
+		this.library = library.getInstance(); //GeTiNsTaNcE
+		this.state = ControlState.INITIALISED; //
 	}
 	
 
