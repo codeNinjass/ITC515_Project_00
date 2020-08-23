@@ -42,13 +42,13 @@ public class BorrowBookControl {  //bORROW_bOOK_cONTROL
 	}
 
 		
-	public void SwIpEd(int mEmBeR_Id) {
-		if (!sTaTe.equals(CONTROL_STATE.READY)) 
+	public void swiped(int memberId) { //chaned swiped and memberId
+		if (!this.state.equals(ControlState.READY)) //
 			throw new RuntimeException("BorrowBookControl: cannot call cardSwiped except in READY state");
 			
-		mEmBeR = lIbRaRy.gEt_MeMbEr(mEmBeR_Id);
-		if (mEmBeR == null) {
-			uI.DiSpLaY("Invalid memberId");
+		this.member = library.MEMBER(memberId);//
+		if (this.member == null) {//
+			this.UI.display("Invalid memberId");//
 			return;
 		}
 		if (lIbRaRy.cAn_MeMbEr_BoRrOw(mEmBeR)) {
