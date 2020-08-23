@@ -20,9 +20,9 @@ public class BorrowBookControl {  //bORROW_bOOK_cONTROL
 	private enum ControlState { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };//CONTROL_STATE->ControlState
 	private ControlState state; //CONTROL_STATE sTaTe->ControlState state
 	
-	private List<Book> pEnDiNg_LiSt;
-	private List<Loan> cOmPlEtEd_LiSt;
-	private Book bOoK;
+	private List<Book> pending; //pEnDiNg_LiSt
+	private List<Loan> completed; //cOmPlEtEd_LiSt
+	private Book book; //
 	
 	
 	public bORROW_bOOK_cONTROL() {
