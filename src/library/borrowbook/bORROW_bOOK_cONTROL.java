@@ -88,18 +88,19 @@ public class BorrowBookControl {  //bORROW_bOOK_cONTROL
 	}
 	
 	
-	public void CoMpLeTe() {
-		if (pEnDiNg_LiSt.size() == 0) 
-			CaNcEl();
+	public void complete() { //changed to complete
+		if (this.pending.size() == 0) //changed to pending
+			this.cancel();
 		
 		else {
-			uI.DiSpLaY("\nFinal Borrowing List");
-			for (Book bOoK : pEnDiNg_LiSt) 
-				uI.DiSpLaY(bOoK.toString());
+			this.UI.display("\nFinal Borrowing List");//
+			for (book displayBook : this.pending) {
+				this.UI.display(displayBook.toString());//
+			}
 			
-			cOmPlEtEd_LiSt = new ArrayList<Loan>();
-			uI.SeT_StAtE(BorrowBookUI.uI_STaTe.FINALISING);
-			sTaTe = CONTROL_STATE.FINALISING;
+			this.completed = new ArrayList<Loan>();//changed to completed
+			this.UI.setState(BorrowBookUI.UIState.FINALISING);//changed to BorrowBookUI
+			this.state = ControlState.FINALISING;//changed to ControlState
 		}
 	}
 
