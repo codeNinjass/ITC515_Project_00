@@ -9,6 +9,7 @@ Mediator: Anish
 Reviewer: Bednidhi
 */
 
+// Calendar class
 public class Calendar {
 	
 	private static Calendar self;
@@ -19,6 +20,7 @@ public class Calendar {
 		calendar = java.util.Calendar.getInstance();
 	}
 	
+	// static class
 	public static Calendar getInstance() {
 		if (self == null) {
 			self = new Calendar();
