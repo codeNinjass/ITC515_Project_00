@@ -123,7 +123,7 @@ public class BorrowBookControl {  //bORROW_bOOK_cONTROL
 	}
 
 	
-	public void CaNcEl() {
+	public void cancel() {//changed to cancel
 		uI.SeT_StAtE(BorrowBookUI.uI_STaTe.CANCELLED);
 		sTaTe = CONTROL_STATE.CANCELLED;
 	}
