@@ -82,8 +82,8 @@ public class BorrowBookControl {  //bORROW_bOOK_cONTROL
 			this.UI.display(displayBook.toString()); //
 		
 		if (this.library.Loans_Remaining_For_Member(this.member) - this.pending.size() == 0) { //gEt_NuMbEr_Of_LoAnS_ReMaInInG_FoR_MeMbEr-->Loans_Remaining_For_Member
-			uI.DiSpLaY("Loan limit reached");
-			CoMpLeTe();
+			this.UI.display("Loan limit reached");//
+			this.complete();//
 		}
 	}
 	
