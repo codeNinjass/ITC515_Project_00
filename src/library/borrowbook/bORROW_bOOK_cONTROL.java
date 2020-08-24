@@ -118,8 +118,8 @@ public class BorrowBookControl {  //bORROW_bOOK_cONTROL
 			this.UI.display(LOAN.toString());
 		}
 		
-		uI.SeT_StAtE(BorrowBookUI.uI_STaTe.COMPLETED);
-		sTaTe = CONTROL_STATE.COMPLETED;
+		this.UI.setState(BorrowBookUI.UIState.COMPLETED);//cahnged to setState
+		this.state = ControlState.COMPLETED;//
 	}
 
 	
