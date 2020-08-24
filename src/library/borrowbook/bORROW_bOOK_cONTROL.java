@@ -54,11 +54,11 @@ public class BorrowBookControl {  //bORROW_bOOK_cONTROL
 		if (this.library.MEMBER_CAN_BORROW(this.member)) { //lIbRaRy.cAn_MeMbEr_BoRrOw
 			this.pending = new ArrayList<>(); //pEnDiNg_LiSt
 			this.UI.setState(BorrowBookUI.UIState.SCANNING);//
-			sTaTe = CONTROL_STATE.SCANNING; 
+			this.state = ControlState.SCANNING; 
 		}
 		else {
-			uI.DiSpLaY("Member cannot borrow at this time");
-			uI.SeT_StAtE(BorrowBookUI.uI_STaTe.RESTRICTED); 
+			this.UI.display("Member cannot borrow at this time"); //uI.DiSpLaY
+			this.UI.setState(BorrowBookUI.UIState.RESTRICTED); //uI.SeT_StAtE
 		}
 	}
 	
