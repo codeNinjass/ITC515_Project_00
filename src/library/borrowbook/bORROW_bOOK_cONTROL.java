@@ -52,8 +52,8 @@ public class BorrowBookControl {  //bORROW_bOOK_cONTROL
 			return;
 		}
 		if (this.library.MEMBER_CAN_BORROW(this.member)) { //lIbRaRy.cAn_MeMbEr_BoRrOw
-			pEnDiNg_LiSt = new ArrayList<>();
-			uI.SeT_StAtE(BorrowBookUI.uI_STaTe.SCANNING);
+			this.pending = new ArrayList<>(); //pEnDiNg_LiSt
+			this.UI.setState(BorrowBookUI.UIState.SCANNING);//
 			sTaTe = CONTROL_STATE.SCANNING; 
 		}
 		else {
