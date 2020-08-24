@@ -73,8 +73,8 @@ public class BorrowBookControl {  //bORROW_bOOK_cONTROL
 			this.UI.display("Invalid bookId");//
 			return;
 		}
-		if (!bOoK.iS_AvAiLaBlE()) {
-			uI.DiSpLaY("Book cannot be borrowed");
+		if (!this.book.AVAILABLE()) {//
+			this.UI.display("Book cannot be borrowed");//
 			return;
 		}
 		pEnDiNg_LiSt.add(bOoK);
