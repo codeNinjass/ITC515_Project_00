@@ -41,7 +41,7 @@ public class PayFineUI { // define class name called PayFineUI
 				}
 				try {
 					int memberId = Integer.valueOf(memStr).intValue();
-					control.CaRd_sWiPeD(memberId);
+					control.cardSwiped(memberId); // Changed CaRd_sWiPeD to cardSwiped
 				}
 				catch (NumberFormatException e) {
 					output("Invalid memberId");

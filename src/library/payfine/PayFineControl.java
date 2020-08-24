@@ -49,9 +49,9 @@ public class PayFineControl { // changing class name as per standard coding conv
 	}
 	
 	
-	public void CaNcEl() { // changed method name as per standard coding convention from CaNcEl --> cancel
+	public void cancel() { // changed method name as per standard coding convention from CaNcEl --> cancel
 		if (!state.equals(Controlstate.READY)) 
-		Ui.SeT_state(PayFineUI.uI_state.CANCELLED);
+		Ui.setState(PayFineUI.uiState.CANCELLED);
 		state = Controlstate.CANCELLED;
 	}
 
@@ -61,14 +61,14 @@ public class PayFineControl { // changing class name as per standard coding conv
 		if (!state.equals(Controlstate.PAYING)) 
 			throw new RuntimeException("PayFineControl: cannot call payFine except in PAYING state");
 			
-		double ChAnGe = member.PaY_FiNe(AmOuNt);
-		if (ChAnGe > 0) 
-			Ui.DiSplAY(String.format("Change: $%.2f", ChAnGe));
+		double change = member.PayFine(AmOuNt); // Changed from ChAnGe to change 
+		if (change > 0) 
+			Ui.display(String.format("Change: $%.2f", change));
 		
-		Ui.DiSplAY(member.toString());
-		Ui.SeT_state(PayFineUI.uI_state.COMPLETED);
+		Ui.display(member.toString());
+		Ui.setState(PayFineUI.uiState.COMPLETED);
 		state = Controlstate.COMPLETED;
-		return ChAnGe;
+		return change;
 	}
 	
 
