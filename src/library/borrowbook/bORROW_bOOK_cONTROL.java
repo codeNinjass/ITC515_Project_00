@@ -124,7 +124,7 @@ public class BorrowBookControl {  //bORROW_bOOK_cONTROL
 
 	
 	public void cancel() {//changed to cancel
-		uI.SeT_StAtE(BorrowBookUI.uI_STaTe.CANCELLED);
+		this.UI.setState(BorrowBookUI.UIState.CANCELLED);//setState
 		sTaTe = CONTROL_STATE.CANCELLED;
 	}
 	
