@@ -68,18 +68,18 @@ public class BorrowBookControl {  //bORROW_bOOK_cONTROL
 		if (!this.state.equals(ControlState.SCANNING)) //
 			throw new RuntimeException("BorrowBookControl: cannot call bookScanned except in SCANNING state");
 			
-		thi.book = this.library.Book(bookId);//
+		this.book = this.library.Book(bookId);//
 		if (this.book == null) {
 			this.UI.display("Invalid bookId");//
 			return;
 		}
 		if (!this.book.AVAILABLE()) {//
-			this.UI.display("Book cannot be borrowed");//
+			this.UI.display("Book cannot be borrowed");// B->displayBook
 			return;
 		}
-		pEnDiNg_LiSt.add(bOoK);
-		for (Book B : pEnDiNg_LiSt) 
-			uI.DiSpLaY(B.toString());
+		this.pending.add(this.book);//
+		for (book displayBook : this.pending) //
+			this.UI.display(displayBook.toString()); //
 		
 		if (lIbRaRy.gEt_NuMbEr_Of_LoAnS_ReMaInInG_FoR_MeMbEr(mEmBeR) - pEnDiNg_LiSt.size() == 0) {
 			uI.DiSpLaY("Loan limit reached");
