@@ -106,10 +106,10 @@ public class BorrowBookControl {  //bORROW_bOOK_cONTROL
 
 
 	public void commitLoans() { //changed to commitLoans
-		if (!sTaTe.equals(CONTROL_STATE.FINALISING)) 
+		if (!this.state.equals(ControlState.FINALISING)){ //
 			throw new RuntimeException("BorrowBookControl: cannot call commitLoans except in FINALISING state");
-			
-		for (Book B : pEnDiNg_LiSt) {
+		}
+		for (book displayBook : this.pending) { //changed to displayBook and pending
 			Loan lOaN = lIbRaRy.iSsUe_LoAn(B, mEmBeR);
 			cOmPlEtEd_LiSt.add(lOaN);			
 		}
