@@ -51,7 +51,7 @@ public class BorrowBookControl {  //bORROW_bOOK_cONTROL
 			this.UI.display("Invalid memberId");//
 			return;
 		}
-		if (lIbRaRy.cAn_MeMbEr_BoRrOw(mEmBeR)) {
+		if (this.library.MEMBER_CAN_BORROW(this.member)) { //lIbRaRy.cAn_MeMbEr_BoRrOw
 			pEnDiNg_LiSt = new ArrayList<>();
 			uI.SeT_StAtE(BorrowBookUI.uI_STaTe.SCANNING);
 			sTaTe = CONTROL_STATE.SCANNING; 
