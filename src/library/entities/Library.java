@@ -211,9 +211,9 @@ public class Library implements Serializable {
 		Book book  = currentLoan.GeT_BoOk();
 		
 		double oVeR_DuE_FiNe = CaLcUlAtE_OvEr_DuE_FiNe(currentLoan);		//cUrReNt_LoAn -->currentLoan
-		mEmBeR.AdD_FiNe(oVeR_DuE_FiNe);	
+		mEmBeR.AdD_FiNe(overDueFine);	
 		
-		mEmBeR.dIsChArGeLoAn(cUrReNt_LoAn);
+		mEmBeR.dIsChArGeLoAn(currentLoan);		//cUrReNt_LoAn -->currentLoan
 		bOoK.ReTuRn(iS_dAmAgEd);
 		if (iS_dAmAgEd) {
 			mEmBeR.AdD_FiNe(damageFee);
