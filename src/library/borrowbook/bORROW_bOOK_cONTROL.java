@@ -113,8 +113,8 @@ public class BorrowBookControl {  //bORROW_bOOK_cONTROL
 			loan LOAN = this.library.ISSUE_LOAN(displayBook, this.member); //changed to LOAN, displayBook and this.member
 			this.completed.add(LOAN); //changed to completed			
 		}
-		uI.DiSpLaY("Completed Loan Slip");
-		for (Loan LOAN : cOmPlEtEd_LiSt) 
+		this.UI.display("Completed Loan Slip");//
+		for (Loan LOAN : this.completed) //
 			uI.DiSpLaY(LOAN.toString());
 		
 		uI.SeT_StAtE(BorrowBookUI.uI_STaTe.COMPLETED);
