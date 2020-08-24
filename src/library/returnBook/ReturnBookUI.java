@@ -17,7 +17,7 @@ public class ReturnBookUI {
 	private Scanner input;
 	private uiState state;
 
-	
+		
 	public ReturnBookUI(returnBookControl control) {
 		this.control = control;
 		input = new Scanner(System.in);

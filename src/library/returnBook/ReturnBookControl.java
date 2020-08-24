@@ -13,6 +13,7 @@ Reviewer: Bednidhi
 // class declaration
 public class ReturnBookControl {
 
+	// private variable declaration
 	private ReturnBookUI UI;
 	private enum controlState { initialised, ready, inspecting };
 	private controlState state;
@@ -21,6 +22,7 @@ public class ReturnBookControl {
 	private Loan currentLoan;
 	
 
+	// return book control method
 	public ReturnBookControl() {
 		this.library= Library.getInstance();
 		state = controlState.initialised;
@@ -66,7 +68,6 @@ public class ReturnBookControl {
 		UI.setState(ReturnBookUI.uiState.inspecting);
 		state = controlState.inspecting;		
 	}
-
 
 	public void scanningComplete() {
 		if (!state.equals(controlState.ready)) 
