@@ -210,7 +210,7 @@ public class Library implements Serializable {
 		Member member = currentLoan.GeT_MeMbEr();
 		Book book  = currentLoan.GeT_BoOk();
 		
-		double oVeR_DuE_FiNe = CaLcUlAtE_OvEr_DuE_FiNe(cUrReNt_LoAn);
+		double oVeR_DuE_FiNe = CaLcUlAtE_OvEr_DuE_FiNe(currentLoan);		//cUrReNt_LoAn -->currentLoan
 		mEmBeR.AdD_FiNe(oVeR_DuE_FiNe);	
 		
 		mEmBeR.dIsChArGeLoAn(cUrReNt_LoAn);
