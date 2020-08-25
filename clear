@@ -1,0 +1,1046 @@
+[1mdiff --git a/install b/install[m
+[1mdeleted file mode 100644[m
+[1mindex 170e514..0000000[m
+[1m--- a/install[m
+[1m+++ /dev/null[m
+[36m@@ -1,220 +0,0 @@[m
+[31m-[1mdiff --git a/src/library/fixbook/FixBookUI.java b/src/library/fixbook/FixBookUI.java[m[m
+[31m-[1mindex 1521621..57d9bf0 100644[m[m
+[31m-[1m--- a/src/library/fixbook/FixBookUI.java[m[m
+[31m-[1m+++ b/src/library/fixbook/FixBookUI.java[m[m
+[31m-[36m@@ -10,6 +10,7 @@[m [mpublic class FixBookUI {  // define class called FixBookUI[m[m
+[31m- 	private Scanner input;	//usiing standard naming convention for variable name and its data type[m[m
+[31m- 	private UiState state;	// using standard naming convention for variable name and its data type[m[m
+[31m- [m[m
+[31m-[32m+[m[41m[m[m
+[31m- 	[m[m
+[31m- 	public FixBookUI(FixBookControl control) {[m[m
+[31m- 		this.control = control;[m[m
+[31m-[36m@@ -19,12 +20,12 @@[m [mpublic class FixBookUI {  // define class called FixBookUI[m[m
+[31m- 	}[m[m
+[31m- [m[m
+[31m- [m[m
+[31m-[31m-	public void SeT_StAtE(UiState state) {[m[m
+[31m-[32m+[m	[32mpublic void setState(UiState state) {		//Change function name to universal adopted form. Set_StAte --> setState[m[41m[m[m
+[31m- 		this.state = state;[m[m
+[31m- 	}[m[m
+[31m- [m[m
+[31m- 	[m[m
+[31m-[31m-	public void RuN() {[m[m
+[31m-[32m+[m	[32mpublic void run() {		//Change function name to universal adopted form. RuN --> run[m[41m[m[m
+[31m- 		OuTpUt("Fix Book Use Case UI\n");[m[m
+[31m- 		[m[m
+[31m- 		while (true) {[m[m
+[31m-[36m@@ -42,13 +43,13 @@[m [mpublic class FixBookUI {  // define class called FixBookUI[m[m
+[31m- 						CoNtRoL.BoOk_ScAnNeD(BoOk_Id);[m[m
+[31m- 					}[m[m
+[31m- 					catch (NumberFormatException e) {[m[m
+[31m-[31m-						OuTpUt("Invalid bookId");[m[m
+[31m-[32m+[m						[32moutput("Invalid bookId");	//OuTpUt --> output[m[41m[m[m
+[31m- 					}[m[m
+[31m- 				}[m[m
+[31m- 				break;	[m[m
+[31m- 				[m[m
+[31m- 			case FIXING:[m[m
+[31m-[31m-				String AnS = iNpUt("Fix Book? (Y/N) : ");[m[m
+[31m-[32m+[m				[32mString AnS = input("Fix Book? (Y/N) : ");	//iNpUt --> input[m[41m[m[m
+[31m- 				boolean FiX = false;[m[m
+[31m- 				if (AnS.toUpperCase().equals("Y")) [m[m
+[31m- 					FiX = true;[m[m
+[31m-[36m@@ -57,11 +58,11 @@[m [mpublic class FixBookUI {  // define class called FixBookUI[m[m
+[31m- 				break;[m[m
+[31m- 								[m[m
+[31m- 			case COMPLETED:[m[m
+[31m-[31m-				OuTpUt("Fixing process complete");[m[m
+[31m-[32m+[m				[32moutput("Fixing process complete");	//OuTpUt --> output[m[41m[m[m
+[31m- 				return;[m[m
+[31m- 			[m[m
+[31m- 			default:[m[m
+[31m-[31m-				OuTpUt("Unhandled state");[m[m
+[31m-[32m+[m				[32moutput("Unhandled state");		//OuTpUt --> output[m[41m[m[m
+[31m- 				throw new RuntimeException("FixBookUI : unhandled state :" + state);			[m[m
+[31m- 			[m[m
+[31m- 			}		[m[m
+[31m-[36m@@ -70,19 +71,19 @@[m [mpublic class FixBookUI {  // define class called FixBookUI[m[m
+[31m- 	}[m[m
+[31m- [m[m
+[31m- 	[m[m
+[31m-[31m-	private String iNpUt(String prompt) {[m[m
+[31m-[32m+[m	[32mprivate String input(String prompt) {		//change function name to universal addopted naming form. iNpUt -->input[m[41m[m[m
+[31m- 		System.out.print(prompt);[m[m
+[31m-[31m-		return InPuT.nextLine();[m[m
+[31m-[32m+[m		[32mreturn input.nextLine();[m[41m[m[m
+[31m- 	}	[m[m
+[31m- 		[m[m
+[31m- 		[m[m
+[31m-[31m-	private void OuTpUt(Object object) {[m[m
+[31m-[32m+[m	[32mprivate void output(Object object) {		// change function name to universal addopted naming form. OutpUt -->output[m[41m[m[m
+[31m- 		System.out.println(object);[m[m
+[31m- 	}[m[m
+[31m- 	[m[m
+[31m- [m[m
+[31m-[31m-	public void dIsPlAy(Object object) {[m[m
+[31m-[31m-		OuTpUt(object);[m[m
+[31m-[32m+[m	[32mpublic void display(Object object) {		//change function name to universal addopted naming form. dIsPlAy -->display[m[41m[m[m
+[31m-[32m+[m		[32moutput(object);[m[41m[m[m
+[31m- 	}[m[m
+[31m- 	[m[m
+[31m- 	[m[m
+[31m-[1mdiff --git a/src/library/returnBook/ReturnBookUI.java b/src/library/returnBook/ReturnBookUI.java[m[m
+[31m-[1mindex ec4950c..4b645c5 100644[m[m
+[31m-[1m--- a/src/library/returnBook/ReturnBookUI.java[m[m
+[31m-[1m+++ b/src/library/returnBook/ReturnBookUI.java[m[m
+[31m-[36m@@ -1,94 +1,87 @@[m[m
+[31m-[31m-//import packages [m[m
+[31m- package library.returnBook;[m[m
+[31m- import java.util.Scanner;[m[m
+[31m- [m[m
+[31m-[31m-/*[m[m
+[31m-[31m-Author: Saroj[m[m
+[31m-[31m-Mediator: Anish[m[m
+[31m-[31m-Reviewer: Bednidhi[m[m
+[31m-[31m-*/[m[m
+[31m- [m[m
+[31m- public class ReturnBookUI {[m[m
+[31m- [m[m
+[31m-[31m-	// static class[m[m
+[31m-[31m-	public static enum uiState { initialised, ready, inspecting, completed };[m[m
+[31m-[32m+[m	[32mpublic static enum uI_sTaTe { INITIALISED, READY, INSPECTING, COMPLETED };[m[41m[m[m
+[31m- [m[m
+[31m-[31m-	private returnBookControl control;[m[m
+[31m-[31m-	private Scanner input;[m[m
+[31m-[31m-	private uiState state;[m[m
+[31m-[32m+[m	[32mprivate rETURN_bOOK_cONTROL CoNtRoL;[m[41m[m[m
+[31m-[32m+[m	[32mprivate Scanner iNpUt;[m[41m[m[m
+[31m-[32m+[m	[32mprivate uI_sTaTe StATe;[m[41m[m[m
+[31m- [m[m
+[31m- 	[m[m
+[31m-[31m-	public ReturnBookUI(returnBookControl control) {[m[m
+[31m-[31m-		this.control = control;[m[m
+[31m-[31m-		input = new Scanner(System.in);[m[m
+[31m-[31m-		state = uiState.initialised;[m[m
+[31m-[31m-		control.setUi(this);[m[m
+[31m-[32m+[m	[32mpublic ReturnBookUI(rETURN_bOOK_cONTROL cOnTrOL) {[m[41m[m[m
+[31m-[32m+[m		[32mthis.CoNtRoL = cOnTrOL;[m[41m[m[m
+[31m-[32m+[m		[32miNpUt = new Scanner(System.in);[m[41m[m[m
+[31m-[32m+[m		[32mStATe = uI_sTaTe.INITIALISED;[m[41m[m[m
+[31m-[32m+[m		[32mcOnTrOL.sEt_uI(this);[m[41m[m[m
+[31m- 	}[m[m
+[31m- [m[m
+[31m- [m[m
+[31m-[31m-	public void run() {		[m[m
+[31m-[31m-		output("Return Book Use Case UI\n");[m[m
+[31m-[32m+[m	[32mpublic void RuN() {[m[41m		[m[m
+[31m-[32m+[m		[32moUtPuT("Return Book Use Case UI\n");[m[41m[m[m
+[31m- 		[m[m
+[31m- 		while (true) {[m[m
+[31m- 			[m[m
+[31m-[31m-			switch (state) {[m[m
+[31m-[32m+[m			[32mswitch (StATe) {[m[41m[m[m
+[31m- 			[m[m
+[31m-[31m-			case initialised:[m[m
+[31m-[32m+[m			[32mcase INITIALISED:[m[41m[m[m
+[31m- 				break;[m[m
+[31m- 				[m[m
+[31m-[31m-			case ready:[m[m
+[31m-[31m-				String bookInputString = input("Scan Book (<enter> completes): ");[m[m
+[31m-[31m-				if (bookInputString.length() == 0) [m[m
+[31m-[31m-					control.sCaNnInG_cOmPlEtE();[m[m
+[31m-[32m+[m			[32mcase READY:[m[41m[m[m
+[31m-[32m+[m				[32mString BoOk_InPuT_StRiNg = iNpUt("Scan Book (<enter> completes): ");[m[41m[m[m
+[31m-[32m+[m				[32mif (BoOk_InPuT_StRiNg.length() == 0)[m[41m [m[m
+[31m-[32m+[m					[32mCoNtRoL.sCaNnInG_cOmPlEtE();[m[41m[m[m
+[31m- 				[m[m
+[31m- 				else {[m[m
+[31m- 					try {[m[m
+[31m-[31m-						int bookId = Integer.valueOf(bookInputString).intValue();[m[m
+[31m-[31m-						control.bOoK_sCaNnEd(bookId);[m[m
+[31m-[32m+[m						[32mint Book_Id = Integer.valueOf(BoOk_InPuT_StRiNg).intValue();[m[41m[m[m
+[31m-[32m+[m						[32mCoNtRoL.bOoK_sCaNnEd(Book_Id);[m[41m[m[m
+[31m- 					}[m[m
+[31m- 					catch (NumberFormatException e) {[m[m
+[31m-[31m-						output("Invalid bookId");[m[m
+[31m-[32m+[m						[32moUtPuT("Invalid bookId");[m[41m[m[m
+[31m- 					}					[m[m
+[31m- 				}[m[m
+[31m- 				break;				[m[m
+[31m- 				[m[m
+[31m-[31m-			case inspecting:[m[m
+[31m-[31m-				String ans = input("Is book damaged? (Y/N): ");[m[m
+[31m-[31m-				boolean isDamaged = false;[m[m
+[31m-[31m-				if (ans.toUpperCase().equals("Y")) 					[m[m
+[31m-[31m-					isDamaged = true;[m[m
+[31m-[32m+[m			[32mcase INSPECTING:[m[41m[m[m
+[31m-[32m+[m				[32mString AnS = iNpUt("Is book damaged? (Y/N): ");[m[41m[m[m
+[31m-[32m+[m				[32mboolean Is_DAmAgEd = false;[m[41m[m[m
+[31m-[32m+[m				[32mif (AnS.toUpperCase().equals("Y"))[m[41m 					[m[m
+[31m-[32m+[m					[32mIs_DAmAgEd = true;[m[41m[m[m
+[31m- 				[m[m
+[31m-[31m-				control.dIsChArGe_lOaN(isDamaged);[m[m
+[31m-[32m+[m				[32mCoNtRoL.dIsChArGe_lOaN(Is_DAmAgEd);[m[41m[m[m
+[31m- 			[m[m
+[31m-[31m-			case completed:[m[m
+[31m-[31m-				output("Return processing complete");[m[m
+[31m-[32m+[m			[32mcase COMPLETED:[m[41m[m[m
+[31m-[32m+[m				[32moUtPuT("Return processing complete");[m[41m[m[m
+[31m- 				return;[m[m
+[31m- 			[m[m
+[31m- 			default:[m[m
+[31m-[31m-				output("Unhandled state");[m[m
+[31m-[31m-				throw new RuntimeException("ReturnBookUI : unhandled state :" + state);			[m[m
+[31m-[32m+[m				[32moUtPuT("Unhandled state");[m[41m[m[m
+[31m-[32m+[m				[32mthrow new RuntimeException("ReturnBookUI : unhandled state :" + StATe);[m[41m			[m[m
+[31m- 			}[m[m
+[31m- 		}[m[m
+[31m- 	}[m[m
+[31m- [m[m
+[31m- 	[m[m
+[31m-[31m-	private String input(String prompt) {[m[m
+[31m-[31m-		System.out.print(prompt);[m[m
+[31m-[31m-		return input.nextLine();[m[m
+[31m-[32m+[m	[32mprivate String iNpUt(String PrOmPt) {[m[41m[m[m
+[31m-[32m+[m		[32mSystem.out.print(PrOmPt);[m[41m[m[m
+[31m-[32m+[m		[32mreturn iNpUt.nextLine();[m[41m[m[m
+[31m- 	}	[m[m
+[31m- 		[m[m
+[31m- 		[m[m
+[31m-[31m-	private void output(Object object) {[m[m
+[31m-[31m-		System.out.println(object);[m[m
+[31m-[32m+[m	[32mprivate void oUtPuT(Object ObJeCt) {[m[41m[m[m
+[31m-[32m+[m		[32mSystem.out.println(ObJeCt);[m[41m[m[m
+[31m- 	}[m[m
+[31m- 	[m[m
+[31m- 			[m[m
+[31m-[31m-	public void display(Object object) {[m[m
+[31m-[31m-		output(object);[m[m
+[31m-[32m+[m	[32mpublic void DiSpLaY(Object object) {[m[41m[m[m
+[31m-[32m+[m		[32moUtPuT(object);[m[41m[m[m
+[31m- 	}[m[m
+[31m- 	[m[m
+[31m-[31m-	public void setState(uiState state) {[m[m
+[31m-[31m-		this.state = state;[m[m
+[31m-[32m+[m	[32mpublic void sEt_sTaTe(uI_sTaTe state) {[m[41m[m[m
+[31m-[32m+[m		[32mthis.StATe = state;[m[41m[m[m
+[31m- 	}[m[m
+[31m- [m[m
+[31m- 	[m[m
+[1mdiff --git a/src/library/entities/Calendar.java b/src/library/entities/Calendar.java[m
+[1mindex b1a1e6d..3f1ce7d 100644[m
+[1m--- a/src/library/entities/Calendar.java[m
+[1m+++ b/src/library/entities/Calendar.java[m
+[36m@@ -1,66 +1,73 @@[m
+[32m+[m[32m// import packages[m[41m[m
+ package library.entities;[m
+ import java.util.Date;[m
+ import java.util.concurrent.TimeUnit;[m
+ [m
+[32m+[m[32m/*[m[41m[m
+[32m+[m[32mAuthor: Saroj[m[41m[m
+[32m+[m[32mMediator: Anish[m[41m[m
+[32m+[m[32mReviewer: Bednidhi[m[41m[m
+[32m+[m[32m*/[m[41m[m
+[32m+[m[41m[m
+ public class Calendar {[m
+ 	[m
+[31m-	private static Calendar sElF;[m
+[31m-	private static java.util.Calendar cAlEnDaR;[m
+[32m+[m	[32mprivate static Calendar self;[m[41m[m
+[32m+[m	[32mprivate static java.util.Calendar calendar;[m[41m[m
+ 	[m
+ 	[m
+ 	private Calendar() {[m
+[31m-		cAlEnDaR = java.util.Calendar.getInstance();[m
+[32m+[m		[32mcalendar = java.util.Calendar.getInstance();[m[41m[m
+ 	}[m
+ 	[m
+[31m-	public static Calendar gEtInStAnCe() {[m
+[31m-		if (sElF == null) {[m
+[31m-			sElF = new Calendar();[m
+[32m+[m	[32mpublic static Calendar getInstance() {[m[41m[m
+[32m+[m		[32mif (self == null) {[m[41m[m
+[32m+[m			[32mself = new Calendar();[m[41m[m
+ 		}[m
+[31m-		return sElF;[m
+[32m+[m		[32mreturn self;[m[41m[m
+ 	}[m
+ 	[m
+ 	public void incrementDate(int days) {[m
+[31m-		cAlEnDaR.add(java.util.Calendar.DATE, days);		[m
+[32m+[m		[32mcalendar.add(java.util.Calendar.DATE, days);[m[41m		[m
+ 	}[m
+ 	[m
+[31m-	public synchronized void SeT_DaTe(Date DaTe) {[m
+[32m+[m	[32mpublic synchronized void setDate(Date DaTe) {[m[41m[m
+ 		try {[m
+[31m-			cAlEnDaR.setTime(DaTe);[m
+[31m-	        cAlEnDaR.set(java.util.Calendar.HOUR_OF_DAY, 0);  [m
+[31m-	        cAlEnDaR.set(java.util.Calendar.MINUTE, 0);  [m
+[31m-	        cAlEnDaR.set(java.util.Calendar.SECOND, 0);  [m
+[31m-	        cAlEnDaR.set(java.util.Calendar.MILLISECOND, 0);[m
+[32m+[m			[32mcalendar.setTime(DaTe);[m[41m[m
+[32m+[m	[32m        calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);[m[41m  [m
+[32m+[m	[32m        calendar.set(java.util.Calendar.MINUTE, 0);[m[41m  [m
+[32m+[m	[32m        calendar.set(java.util.Calendar.SECOND, 0);[m[41m  [m
+[32m+[m	[32m        calendar.set(java.util.Calendar.MILLISECOND, 0);[m[41m[m
+ 		}[m
+ 		catch (Exception e) {[m
+ 			throw new RuntimeException(e);[m
+ 		}	[m
+ 	}[m
+[31m-	public synchronized Date gEt_DaTe() {[m
+[32m+[m	[32mpublic synchronized Date getDate() {[m[41m[m
+ 		try {[m
+[31m-	        cAlEnDaR.set(java.util.Calendar.HOUR_OF_DAY, 0);  [m
+[31m-	        cAlEnDaR.set(java.util.Calendar.MINUTE, 0);  [m
+[31m-	        cAlEnDaR.set(java.util.Calendar.SECOND, 0);  [m
+[31m-	        cAlEnDaR.set(java.util.Calendar.MILLISECOND, 0);[m
+[31m-			return cAlEnDaR.getTime();[m
+[32m+[m	[32m        calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);[m[41m  [m
+[32m+[m	[32m        calendar.set(java.util.Calendar.MINUTE, 0);[m[41m  [m
+[32m+[m	[32m        calendar.set(java.util.Calendar.SECOND, 0);[m[41m  [m
+[32m+[m	[32m        calendar.set(java.util.Calendar.MILLISECOND, 0);[m[41m[m
+[32m+[m			[32mreturn calendar.getTime();[m[41m[m
+ 		}[m
+ 		catch (Exception e) {[m
+ 			throw new RuntimeException(e);[m
+ 		}	[m
+ 	}[m
+ [m
+[31m-	public synchronized Date gEt_DuE_DaTe(int loanPeriod) {[m
+[31m-		Date nOw = gEt_DaTe();[m
+[31m-		cAlEnDaR.add(java.util.Calendar.DATE, loanPeriod);[m
+[31m-		Date dUeDaTe = cAlEnDaR.getTime();[m
+[31m-		cAlEnDaR.setTime(nOw);[m
+[31m-		return dUeDaTe;[m
+[32m+[m	[32mpublic synchronized Date getDueDate(int loanPeriod) {[m[41m[m
+[32m+[m		[32mDate now = getDate();[m[41m[m
+[32m+[m		[32mcalendar.add(java.util.Calendar.DATE, loanPeriod);[m[41m[m
+[32m+[m		[32mDate dueDate = calendar.getTime();[m[41m[m
+[32m+[m		[32mcalendar.setTime(now);[m[41m[m
+[32m+[m		[32mreturn dueDate;[m[41m[m
+ 	}[m
+ 	[m
+[31m-	public synchronized long GeT_DaYs_DiFfErEnCe(Date targetDate) {[m
+[32m+[m	[32mpublic synchronized long getDaysDifference(Date targetDate) {[m[41m[m
+ 		[m
+[31m-		long Diff_Millis = gEt_DaTe().getTime() - targetDate.getTime();[m
+[31m-	    long Diff_Days = TimeUnit.DAYS.convert(Diff_Millis, TimeUnit.MILLISECONDS);[m
+[31m-	    return Diff_Days;[m
+[32m+[m		[32mlong diffMillis = getDate().getTime() - targetDate.getTime();[m[41m[m
+[32m+[m	[32m    long diffDays = TimeUnit.DAYS.convert(diffMillis, TimeUnit.MILLISECONDS);[m[41m[m
+[32m+[m	[32m    return diffDays;[m[41m[m
+ 	}[m
+ [m
+ }[m
+[1mdiff --git a/src/library/entities/Library.java b/src/library/entities/Library.java[m
+[1mindex 53de964..c0493e8 100644[m
+[1m--- a/src/library/entities/Library.java[m
+[1m+++ b/src/library/entities/Library.java[m
+[36m@@ -17,66 +17,65 @@[m [mimport java.util.Map;[m
+ @SuppressWarnings("serial")[m
+ public class Library implements Serializable {[m
+ 	[m
+[31m-	//Change variable names according to java style guide[m
+[31m-	private static final String libraryFile = "library.obj";  //lIbRaRyFile --->libraryFile[m
+[31m-	private static final int loanLimit = 2;		//lOaNlImIt-->loanLimit[m
+[32m+[m	[32mprivate static final String lIbRaRyFiLe = "library.obj";[m[41m[m
+[32m+[m	[32mprivate static final int lOaNlImIt = 2;[m[41m[m
+ 	private static final int loanPeriod = 2;[m
+[31m-	private static final double finePerDay = 1.0;		//FiNe_PeR_DaY-->finePerDay[m
+[32m+[m	[32mprivate static final double FiNe_PeR_DaY = 1.0;[m[41m[m
+ 	private static final double maxFinesOwed = 1.0;[m
+ 	private static final double damageFee = 2.0;[m
+ 	[m
+[31m-	private static Library self;		//SeLf --> self[m
+[31m-	private int bookId;		//bOoK_Id --> bookId[m
+[31m-	private int memberId;		//mEmBeR_Id-->memberId[m
+[31m-	private int loanId;		//lOaN_Id-->loanId[m
+[31m-	private Date loanDate;			//lOaN_DaTe-->loanDate[m
+[32m+[m	[32mprivate static Library SeLf;[m[41m[m
+[32m+[m	[32mprivate int bOoK_Id;[m[41m[m
+[32m+[m	[32mprivate int mEmBeR_Id;[m[41m[m
+[32m+[m	[32mprivate int lOaN_Id;[m[41m[m
+[32m+[m	[32mprivate Date lOaN_DaTe;[m[41m[m
+ 	[m
+[31m-	private Map<Integer, Book> catalog;		//CaTaLoG --> catalog[m
+[31m-	private Map<Integer, Member> members;	//MeMbErS -->members[m
+[31m-	private Map<Integer, Loan> loans;		//LoAnS --> loans[m
+[31m-	private Map<Integer, Loan> currentLoans;	//CuRrEnT_LoAnS --> currentLoans[m
+[31m-	private Map<Integer, Book> damagedBooks;	//DaMaGeD_BoOkS --> damagedBooks[m
+[32m+[m	[32mprivate Map<Integer, Book> CaTaLoG;[m[41m[m
+[32m+[m	[32mprivate Map<Integer, Member> MeMbErS;[m[41m[m
+[32m+[m	[32mprivate Map<Integer, Loan> LoAnS;[m[41m[m
+[32m+[m	[32mprivate Map<Integer, Loan> CuRrEnT_LoAnS;[m[41m[m
+[32m+[m	[32mprivate Map<Integer, Book> DaMaGeD_BoOkS;[m[41m[m
+ 	[m
+ [m
+ 	private Library() {[m
+[31m-		catalog = new HashMap<>();		//CaTaLoG -->catalog[m
+[31m-		members = new HashMap<>();		//MeMbErS --> members[m
+[31m-		loans = new HashMap<>();		//LoAnS --> loans[m
+[31m-		currentLoans = new HashMap<>();		//CuRrEnT_LoAnS-->currentLoans[m
+[31m-		damagedBooks = new HashMap<>();		//DaMaGeD_BoOkS -->damagedBooks[m
+[31m-		bookId = 1;			//bOoK_Id --> bookId[m
+[31m-		memberId = 1;		//mEmBeR_Id --> memberId		[m
+[31m-		loanId = 1;			//lOaN_Id --> loanId		[m
+[32m+[m		[32mCaTaLoG = new HashMap<>();[m[41m[m
+[32m+[m		[32mMeMbErS = new HashMap<>();[m[41m[m
+[32m+[m		[32mLoAnS = new HashMap<>();[m[41m[m
+[32m+[m		[32mCuRrEnT_LoAnS = new HashMap<>();[m[41m[m
+[32m+[m		[32mDaMaGeD_BoOkS = new HashMap<>();[m[41m[m
+[32m+[m		[32mbOoK_Id = 1;[m[41m[m
+[32m+[m		[32mmEmBeR_Id = 1;[m[41m		[m
+[32m+[m		[32mlOaN_Id = 1;[m[41m		[m
+ 	}[m
+ [m
+ 	[m
+[31m-	public static synchronized Library getInstance() {		//GeTiNsTaNcE-->getInstance[m
+[31m-		if (self == null) {							//SeLf -->self[m
+[31m-			Path PATH = Paths.get(libraryFile);			//lIbRaRyFiLe -->libraryFile			[m
+[32m+[m	[32mpublic static synchronized Library GeTiNsTaNcE() {[m[41m		[m
+[32m+[m		[32mif (SeLf == null) {[m[41m[m
+[32m+[m			[32mPath PATH = Paths.get(lIbRaRyFiLe);[m[41m			[m
+ 			if (Files.exists(PATH)) {	[m
+[31m-				try (ObjectInputStream libraryFile = new ObjectInputStream(new FileInputStream(libraryFile));) {	////lIbRaRyFiLe -->libraryFile[m
+[32m+[m				[32mtry (ObjectInputStream LiBrArY_FiLe = new ObjectInputStream(new FileInputStream(lIbRaRyFiLe));) {[m[41m[m
+ 			    [m
+[31m-					self = (Library) libraryFile.readObject();    //lIbRaRyFiLe -->libraryFile , Self--> self[m
+[31m-					Calendar.getInstance().setDate(self.loanDate); 	//GeTiNsTaNcE-->getInstance, SeLf.lOaN_DaTe-->self.loanDate, SeT_DaTe-->setDate[m
+[31m-					libraryFile.close();		//LiBrArY_FiLe-->libraryFile[m
+[32m+[m					[32mSeLf = (Library) LiBrArY_FiLe.readObject();[m[41m[m
+[32m+[m					[32mCalendar.gEtInStAnCe().SeT_DaTe(SeLf.lOaN_DaTe);[m[41m[m
+[32m+[m					[32mLiBrArY_FiLe.close();[m[41m[m
+ 				}[m
+ 				catch (Exception e) {[m
+ 					throw new RuntimeException(e);[m
+ 				}[m
+ 			}[m
+[31m-			else self = new Library();		//SeLf -->self[m
+[32m+[m			[32melse SeLf = new Library();[m[41m[m
+ 		}[m
+[31m-		return self;			//SeLf-->self[m
+[32m+[m		[32mreturn SeLf;[m[41m[m
+ 	}[m
+ [m
+ 	[m
+[31m-	public static synchronized void save() 		//SaVe-->save[m
+[31m-		if (self != null) {			//SeLf -->self[m
+[31m-			self.loanDate = Calendar.getInstance().getDate();		//SeLf.lOaN_DaTe-->self.loanDate, gEtInStAnCe().gEt_DaTe()-->getInstance().getDate()[m
+[31m-			try (ObjectOutputStream libraryFiles = new ObjectOutputStream(new FileOutputStream(libraryFile));) {[m
+[31m-				libraryFiles.writeObject(self);			//LiBrArY_fIlE --libraryFiles[m
+[31m-				libraryFiles.flush();[m
+[31m-				libraryFiles.close();	[m
+[32m+[m	[32mpublic static synchronized void SaVe() {[m[41m[m
+[32m+[m		[32mif (SeLf != null) {[m[41m[m
+[32m+[m			[32mSeLf.lOaN_DaTe = Calendar.gEtInStAnCe().gEt_DaTe();[m[41m[m
+[32m+[m			[32mtry (ObjectOutputStream LiBrArY_fIlE = new ObjectOutputStream(new FileOutputStream(lIbRaRyFiLe));) {[m[41m[m
+[32m+[m				[32mLiBrArY_fIlE.writeObject(SeLf);[m[41m[m
+[32m+[m				[32mLiBrArY_fIlE.flush();[m[41m[m
+[32m+[m				[32mLiBrArY_fIlE.close();[m[41m	[m
+ 			}[m
+ 			catch (Exception e) {[m
+ 				throw new RuntimeException(e);[m
+[36m@@ -85,26 +84,26 @@[m [mpublic class Library implements Serializable {[m
+ 	}[m
+ [m
+ 	[m
+[31m-	public int getBookID() {		//gEt_BoOkId-->getBookID[m
+[31m-		return bookID;		//bOoK_Id-->bookID[m
+[32m+[m	[32mpublic int gEt_BoOkId() {[m[41m[m
+[32m+[m		[32mreturn bOoK_Id;[m[41m[m
+ 	}[m
+ 	[m
+ 	[m
+[31m-	public int getMemberID() {		//gEt_MeMbEr_Id-->getMemberID[m
+[31m-		return memberID;		//mEmBeR_Id-->memberID[m
+[32m+[m	[32mpublic int gEt_MeMbEr_Id() {[m[41m[m
+[32m+[m		[32mreturn mEmBeR_Id;[m[41m[m
+ 	}[m
+ 	[m
+ 	[m
+[31m-	private int getNextBookID() {		//gEt_NeXt_BoOk_Id-->getNextBookID[m
+[31m-		return bookID++;		//bOoK_Id-->bookID[m
+[32m+[m	[32mprivate int gEt_NeXt_BoOk_Id() {[m[41m[m
+[32m+[m		[32mreturn bOoK_Id++;[m[41m[m
+ 	}[m
+ [m
+ 	[m
+[31m-	private int getNextMemberID() {		//gEt_NeXt_MeMbEr_Id-->getNextMemberID[m
+[31m-		return memberID++;		//mEmBeR_Id++-->memberID++[m
+[32m+[m	[32mprivate int gEt_NeXt_MeMbEr_Id() {[m[41m[m
+[32m+[m		[32mreturn mEmBeR_Id++;[m[41m[m
+ 	}[m
+ [m
+[31m-//the below code is not updated................	[m
+[32m+[m[41m	[m
+ 	private int gEt_NeXt_LoAn_Id() {[m
+ 		return lOaN_Id++;[m
+ 	}[m
+[1mdiff --git a/src/library/entities/Member.java b/src/library/entities/Member.java[m
+[1mindex 23c9c78..33f577e 100644[m
+[1m--- a/src/library/entities/Member.java[m
+[1m+++ b/src/library/entities/Member.java[m
+[36m@@ -1,3 +1,4 @@[m
+[32m+[m[32m//import packages[m[41m[m
+ package library.entities;[m
+ import java.io.Serializable;[m
+ import java.util.ArrayList;[m
+[36m@@ -5,110 +6,122 @@[m [mimport java.util.HashMap;[m
+ import java.util.List;[m
+ import java.util.Map;[m
+ [m
+[32m+[m[32m/*[m[41m[m
+[32m+[m[32mAuthor: Saroj[m[41m[m
+[32m+[m[32mMediator: Anish[m[41m[m
+[32m+[m[32mReviewer: Bednidhi[m[41m[m
+[32m+[m[32m*/[m[41m[m
+[32m+[m[41m[m
+ @SuppressWarnings("serial")[m
+ public class Member implements Serializable {[m
+ [m
+[31m-	private String LaSt_NaMe;[m
+[31m-	private String FiRsT_NaMe;[m
+[31m-	private String EmAiL_AdDrEsS;[m
+[31m-	private int PhOnE_NuMbEr;[m
+[31m-	private int MeMbEr_Id;[m
+[31m-	private double FiNeS_OwInG;[m
+[32m+[m	[32mprivate String lastName;[m[41m[m
+[32m+[m	[32mprivate String firstName;[m[41m[m
+[32m+[m	[32mprivate String emailAddress;[m[41m[m
+[32m+[m	[32mprivate int phoneNumber;[m[41m[m
+[32m+[m	[32mprivate int memberId;[m[41m[m
+[32m+[m	[32mprivate double finesOwing;[m[41m[m
+ 	[m
+[31m-	private Map<Integer, Loan> cUrReNt_lOaNs;[m
+[32m+[m	[32mprivate Map<Integer, Loan> currentLoans;[m[41m[m
+ [m
+ 	[m
+[31m-	public Member(String lAsT_nAmE, String fIrSt_nAmE, String eMaIl_aDdReSs, int pHoNe_nUmBeR, int mEmBeR_iD) {[m
+[31m-		this.LaSt_NaMe = lAsT_nAmE;[m
+[31m-		this.FiRsT_NaMe = fIrSt_nAmE;[m
+[31m-		this.EmAiL_AdDrEsS = eMaIl_aDdReSs;[m
+[31m-		this.PhOnE_NuMbEr = pHoNe_nUmBeR;[m
+[31m-		this.MeMbEr_Id = mEmBeR_iD;[m
+[32m+[m	[32mpublic Member(String lastName, String firstName, String emailAddress, int phoneNumber, int memberId) {[m[41m[m
+[32m+[m		[32mthis.lastName = lastName;[m[41m[m
+[32m+[m		[32mthis.firstName = firstName;[m[41m[m
+[32m+[m		[32mthis.emailAddress = emailAddress;[m[41m[m
+[32m+[m		[32mthis.phoneNumber = phoneNumber;[m[41m[m
+[32m+[m		[32mthis.memberId = memberId;[m[41m[m
+ 		[m
+[31m-		this.cUrReNt_lOaNs = new HashMap<>();[m
+[32m+[m		[32mthis.currentLoans = new HashMap<>();[m[41m[m
+ 	}[m
+ [m
+[31m-	[m
+[32m+[m	[32m// helper function[m[41m[m
+ 	public String toString() {[m
+ 		StringBuilder sb = new StringBuilder();[m
+[31m-		sb.append("Member:  ").append(MeMbEr_Id).append("\n")[m
+[31m-		  .append("  Name:  ").append(LaSt_NaMe).append(", ").append(FiRsT_NaMe).append("\n")[m
+[31m-		  .append("  Email: ").append(EmAiL_AdDrEsS).append("\n")[m
+[31m-		  .append("  Phone: ").append(PhOnE_NuMbEr)[m
+[32m+[m		[32msb.append("Member:  ").append([m[41m[m
+[32m+[m				[32mmemberId).append("\n")[m[41m[m
+[32m+[m		[32m  .append("  Name:  ").append([m[41m[m
+[32m+[m						[32mlastName).append(", ").append([m[41m[m
+[32m+[m						[32mfirstName).append("\n")[m[41m[m
+[32m+[m		[32m  .append("  Email: ").append([m[41m[m
+[32m+[m						[32memailAddress).append("\n")[m[41m[m
+[32m+[m		[32m  .append("  Phone: ").append([m[41m[m
+[32m+[m						[32mphoneNumber)[m[41m[m
+ 		  .append("\n")[m
+[31m-		  .append(String.format("  Fines Owed :  $%.2f", FiNeS_OwInG))[m
+[32m+[m		[32m  .append(String.format("  Fines Owed :  $%.2f", finesOwing))[m[41m[m
+ 		  .append("\n");[m
+ 		[m
+[31m-		for (Loan LoAn : cUrReNt_lOaNs.values()) {[m
+[31m-			sb.append(LoAn).append("\n");[m
+[32m+[m		[32mfor (Loan loan : currentLoans.values()) {[m[41m[m
+[32m+[m			[32msb.append(loan).append("\n");[m[41m[m
+ 		}		  [m
+ 		return sb.toString();[m
+ 	}[m
+ [m
+[31m-	[m
+[31m-	public int GeT_ID() {[m
+[31m-		return MeMbEr_Id;[m
+[32m+[m	[32m// getter[m[41m[m
+[32m+[m	[32mpublic int getId() {[m[41m[m
+[32m+[m		[32mreturn memberId;[m[41m[m
+ 	}[m
+ [m
+ 	[m
+[31m-	public List<Loan> GeT_LoAnS() {[m
+[31m-		return new ArrayList<Loan>(cUrReNt_lOaNs.values());[m
+[32m+[m	[32mpublic List<Loan> getLoans() {[m[41m[m
+[32m+[m		[32mreturn new ArrayList<Loan>(currentLoans.values());[m[41m[m
+ 	}[m
+ [m
+[31m-	[m
+[31m-	public int gEt_nUmBeR_Of_CuRrEnT_LoAnS() {[m
+[31m-		return cUrReNt_lOaNs.size();[m
+[32m+[m	[32m// getter[m[41m[m
+[32m+[m	[32mpublic int getNumberOfCurrentLoans() {[m[41m[m
+[32m+[m		[32mreturn currentLoans.size();[m[41m[m
+ 	}[m
+ [m
+ 	[m
+[31m-	public double FiNeS_OwEd() {[m
+[31m-		return FiNeS_OwInG;[m
+[32m+[m	[32mpublic double finesOwned() {[m[41m[m
+[32m+[m		[32mreturn finesOwing;[m[41m[m
+ 	}[m
+ [m
+ 	[m
+[31m-	public void TaKe_OuT_LoAn(Loan lOaN) {[m
+[31m-		if (!cUrReNt_lOaNs.containsKey(lOaN.GeT_Id())) [m
+[31m-			cUrReNt_lOaNs.put(lOaN.GeT_Id(), lOaN);[m
+[31m-		[m
+[31m-		else [m
+[32m+[m	[32mpublic void takeOutLoan(Loan loan) {[m[41m[m
+[32m+[m		[32mif (!currentLoans.containsKey(loan.getId())) {[m[41m[m
+[32m+[m			[32mcurrentLoans.put(loan.getId(), loan);[m[41m[m
+[32m+[m		[32m}[m[41m[m
+[32m+[m		[32melse {[m[41m[m
+ 			throw new RuntimeException("Duplicate loan added to member");[m
+[32m+[m		[32m}[m[41m[m
+ 				[m
+ 	}[m
+ [m
+ 	[m
+[31m-	public String GeT_LaSt_NaMe() {[m
+[31m-		return LaSt_NaMe;[m
+[32m+[m	[32mpublic String getLastName() {[m[41m[m
+[32m+[m		[32mreturn lastName;[m[41m[m
+ 	}[m
+ [m
+ 	[m
+[31m-	public String GeT_FiRsT_NaMe() {[m
+[31m-		return FiRsT_NaMe;[m
+[32m+[m	[32mpublic String getFirstName() {[m[41m[m
+[32m+[m		[32mreturn firstName;[m[41m[m
+ 	}[m
+ [m
+ [m
+[31m-	public void AdD_FiNe(double fine) {[m
+[31m-		FiNeS_OwInG += fine;[m
+[32m+[m	[32mpublic void addFine(double fine) {[m[41m[m
+[32m+[m		[32mfinesOwing += fine;[m[41m[m
+ 	}[m
+ 	[m
+[31m-	public double PaY_FiNe(double AmOuNt) {[m
+[31m-		if (AmOuNt < 0) [m
+[32m+[m	[32mpublic double payFine(double amount) {[m[41m[m
+[32m+[m		[32mif (amount < 0)[m[41m [m
+ 			throw new RuntimeException("Member.payFine: amount must be positive");[m
+ 		[m
+ 		double change = 0;[m
+[31m-		if (AmOuNt > FiNeS_OwInG) {[m
+[31m-			change = AmOuNt - FiNeS_OwInG;[m
+[31m-			FiNeS_OwInG = 0;[m
+[32m+[m		[32mif (amount > finesOwing) {[m[41m[m
+[32m+[m			[32mchange = amount - finesOwing;[m[41m[m
+[32m+[m			[32mfinesOwing = 0;[m[41m[m
+ 		}[m
+ 		else [m
+[31m-			FiNeS_OwInG -= AmOuNt;[m
+[32m+[m			[32mfinesOwing -= amount;[m[41m[m
+ 		[m
+ 		return change;[m
+ 	}[m
+ [m
+ [m
+[31m-	public void dIsChArGeLoAn(Loan LoAn) {[m
+[31m-		if (cUrReNt_lOaNs.containsKey(LoAn.GeT_Id())) [m
+[31m-			cUrReNt_lOaNs.remove(LoAn.GeT_Id());[m
+[32m+[m	[32mpublic void dischargeLoan(Loan loan) {[m[41m[m
+[32m+[m		[32mif (currentLoans.containsKey(loan.getId()))[m[41m [m
+[32m+[m			[32mcurrentLoans.remove(loan.getId());[m[41m[m
+ 		[m
+ 		else [m
+ 			throw new RuntimeException("No such loan held by member");[m
+[1mdiff --git a/src/library/payfine/PayFineControl.java b/src/library/payfine/PayFineControl.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..e789c20[m
+[1m--- /dev/null[m
+[1m+++ b/src/library/payfine/PayFineControl.java[m
+[36m@@ -0,0 +1,76 @@[m
+[32m+[m[32m/*Author: Roshan[m
+[32m+[m[32mMediator: Bednidhi[m
+[32m+[m[32mReviewer: Saroj*/[m
+[32m+[m
+[32m+[m[32m// import packages[m
+[32m+[m[32mpackage library.payfine;[m
+[32m+[m[32mimport library.entities.Library;[m
+[32m+[m[32mimport library.entities.Member;[m
+[32m+[m
+[32m+[m[32mpublic class PayFineControl { // changing class name as per standard coding convention from pAY_fINE_cONTROL --> PayFineControl[m
+[32m+[m[41m	[m
+[32m+[m	[32mprivate PayFineUI Ui;[m
+[32m+[m	[32mprivate enum Controlstate { INITIALISED, READY, PAYING, COMPLETED, CANCELLED }; // changing class name as per standard coding convention from  --> Controlstate[m
+[32m+[m	[32mprivate Controlstate state; // standard naming convention for variable name and its data type  StAtE[m
+[32m+[m[41m	[m
+[32m+[m	[32mprivate Library library; // standard naming convention for variable name and its data type  StAtE[m
+[32m+[m	[32mprivate Member member; // standard naming convention for variable name and its data type  StAtE[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic PayFineControl() {[m[41m [m
+[32m+[m		[32mthis.library = library.GeTiNsTaNcE();[m
+[32m+[m		[32mstate = Controlstate.INITIALISED;[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m	[32mpublic void setUI(PayFineUI uI) { // changed method name[m
+[32m+[m		[32mif (!state.equals(Controlstate.INITIALISED)) {[m
+[32m+[m			[32mthrow new RuntimeException("PayFineControl: cannot call setUI except in INITIALISED state");[m
+[32m+[m		[32m}[m[41m	[m
+[32m+[m		[32mthis.Ui = uI;[m
+[32m+[m		[32muI.setState(PayFineUI.uiState.READY);[m
+[32m+[m		[32mstate = Controlstate.READY;[m[41m		[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic void cardSwiped(int memberId) { // changed method name as per standard coding convention from CaRd_sWiPeD --> cardSwiped[m
+[32m+[m		[32mif (!state.equals(Controlstate.READY))[m[41m [m
+[32m+[m			[32mthrow new RuntimeException("PayFineControl: cannot call cardSwiped except in READY state");[m
+[32m+[m[41m			[m
+[32m+[m		[32mmember = library.getMember(memberId);[m
+[32m+[m[41m		[m
+[32m+[m		[32mif (member == null) {[m
+[32m+[m			[32mUi.display("Invalid Member Id");[m
+[32m+[m			[32mreturn;[m
+[32m+[m		[32m}[m
+[32m+[m		[32mUi.display(member.toString());[m
+[32m+[m		[32mUi.setState(PayFineUI.uiState.PAYING);[m
+[32m+[m		[32mstate = Controlstate.PAYING;[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m	[32mpublic void CaNcEl() { // changed method name as per standard coding convention from CaNcEl --> cancel[m
+[32m+[m		[32mif (!state.equals(Controlstate.READY))[m[41m [m
+[32m+[m		[32mUi.SeT_state(PayFineUI.uI_state.CANCELLED);[m
+[32m+[m		[32mstate = Controlstate.CANCELLED;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic double PayFine(double amount) { // changed variable name and method name as per standard coding convention[m
+[32m+[m		[32mif (!state.equals(Controlstate.READY))[m[41m [m
+[32m+[m		[32mif (!state.equals(Controlstate.PAYING))[m[41m [m
+[32m+[m			[32mthrow new RuntimeException("PayFineControl: cannot call payFine except in PAYING state");[m
+[32m+[m[41m			[m
+[32m+[m		[32mdouble ChAnGe = member.PaY_FiNe(AmOuNt);[m
+[32m+[m		[32mif (ChAnGe > 0)[m[41m [m
+[32m+[m			[32mUi.DiSplAY(String.format("Change: $%.2f", ChAnGe));[m
+[32m+[m[41m		[m
+[32m+[m		[32mUi.DiSplAY(member.toString());[m
+[32m+[m		[32mUi.SeT_state(PayFineUI.uI_state.COMPLETED);[m
+[32m+[m		[32mstate = Controlstate.COMPLETED;[m
+[32m+[m		[32mreturn ChAnGe;[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m
+[32m+[m
+[32m+[m[32m}[m
+[1mdiff --git a/src/library/payfine/PayFineUI.java b/src/library/payfine/PayFineUI.java[m
+[1mindex 371f228..d50d25b 100644[m
+[1m--- a/src/library/payfine/PayFineUI.java[m
+[1m+++ b/src/library/payfine/PayFineUI.java[m
+[36m@@ -36,7 +36,7 @@[m [mpublic class PayFineUI { // define class name called PayFineUI[m
+ 			case READY:[m
+ 				String memStr = input("Swipe member card (press <enter> to cancel): ");[m
+ 				if (memStr.length() == 0) {[m
+[31m-					control.CaNcEl();[m
+[32m+[m					[32mcontrol.cancel();[m[41m[m
+ 					break;[m
+ 				}[m
+ 				try {[m
+[36m@@ -52,7 +52,7 @@[m [mpublic class PayFineUI { // define class name called PayFineUI[m
+ 				double amount = 0;[m
+ 				String amtStr = input("Enter amount (<Enter> cancels) : ");[m
+ 				if (amtStr.length() == 0) {[m
+[31m-					control.CaNcEl();[m
+[32m+[m					[32mcontrol.cancel();[m[41m[m
+ 					break;[m
+ 				}[m
+ 				try {[m
+[1mdiff --git a/src/library/payfine/pAY_fINE_cONTROL.java b/src/library/payfine/pAY_fINE_cONTROL.java[m
+[1mdeleted file mode 100644[m
+[1mindex fd956f8..0000000[m
+[1m--- a/src/library/payfine/pAY_fINE_cONTROL.java[m
+[1m+++ /dev/null[m
+[36m@@ -1,69 +0,0 @@[m
+[31m-package library.payfine;[m
+[31m-import library.entities.Library;[m
+[31m-import library.entities.Member;[m
+[31m-[m
+[31m-public class pAY_fINE_cONTROL {[m
+[31m-	[m
+[31m-	private PayFineUI Ui;[m
+[31m-	private enum cOnTrOl_sTaTe { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };[m
+[31m-	private cOnTrOl_sTaTe StAtE;[m
+[31m-	[m
+[31m-	private Library LiBrArY;[m
+[31m-	private Member MeMbEr;[m
+[31m-[m
+[31m-[m
+[31m-	public pAY_fINE_cONTROL() {[m
+[31m-		this.LiBrArY = Library.GeTiNsTaNcE();[m
+[31m-		StAtE = cOnTrOl_sTaTe.INITIALISED;[m
+[31m-	}[m
+[31m-	[m
+[31m-	[m
+[31m-	public void SeT_uI(PayFineUI uI) {[m
+[31m-		if (!StAtE.equals(cOnTrOl_sTaTe.INITIALISED)) {[m
+[31m-			throw new RuntimeException("PayFineControl: cannot call setUI except in INITIALISED state");[m
+[31m-		}	[m
+[31m-		this.Ui = uI;[m
+[31m-		uI.SeT_StAtE(PayFineUI.uI_sTaTe.READY);[m
+[31m-		StAtE = cOnTrOl_sTaTe.READY;		[m
+[31m-	}[m
+[31m-[m
+[31m-[m
+[31m-	public void CaRd_sWiPeD(int MeMbEr_Id) {[m
+[31m-		if (!StAtE.equals(cOnTrOl_sTaTe.READY)) [m
+[31m-			throw new RuntimeException("PayFineControl: cannot call cardSwiped except in READY state");[m
+[31m-			[m
+[31m-		MeMbEr = LiBrArY.gEt_MeMbEr(MeMbEr_Id);[m
+[31m-		[m
+[31m-		if (MeMbEr == null) {[m
+[31m-			Ui.DiSplAY("Invalid Member Id");[m
+[31m-			return;[m
+[31m-		}[m
+[31m-		Ui.DiSplAY(MeMbEr.toString());[m
+[31m-		Ui.SeT_StAtE(PayFineUI.uI_sTaTe.PAYING);[m
+[31m-		StAtE = cOnTrOl_sTaTe.PAYING;[m
+[31m-	}[m
+[31m-	[m
+[31m-	[m
+[31m-	public void CaNcEl() {[m
+[31m-		Ui.SeT_StAtE(PayFineUI.uI_sTaTe.CANCELLED);[m
+[31m-		StAtE = cOnTrOl_sTaTe.CANCELLED;[m
+[31m-	}[m
+[31m-[m
+[31m-[m
+[31m-	public double PaY_FiNe(double AmOuNt) {[m
+[31m-		if (!StAtE.equals(cOnTrOl_sTaTe.PAYING)) [m
+[31m-			throw new RuntimeException("PayFineControl: cannot call payFine except in PAYING state");[m
+[31m-			[m
+[31m-		double ChAnGe = MeMbEr.PaY_FiNe(AmOuNt);[m
+[31m-		if (ChAnGe > 0) [m
+[31m-			Ui.DiSplAY(String.format("Change: $%.2f", ChAnGe));[m
+[31m-		[m
+[31m-		Ui.DiSplAY(MeMbEr.toString());[m
+[31m-		Ui.SeT_StAtE(PayFineUI.uI_sTaTe.COMPLETED);[m
+[31m-		StAtE = cOnTrOl_sTaTe.COMPLETED;[m
+[31m-		return ChAnGe;[m
+[31m-	}[m
+[31m-	[m
+[31m-[m
+[31m-[m
+[31m-}[m
+[1mdiff --git a/src/library/returnBook/ReturnBookControl.java b/src/library/returnBook/ReturnBookControl.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..553c946[m
+[1m--- /dev/null[m
+[1m+++ b/src/library/returnBook/ReturnBookControl.java[m
+[36m@@ -0,0 +1,83 @@[m
+[32m+[m[32m// import packages[m[41m[m
+[32m+[m[32mpackage library.returnBook;[m[41m[m
+[32m+[m[32mimport library.entities.Book;[m[41m[m
+[32m+[m[32mimport library.entities.Library;[m[41m[m
+[32m+[m[32mimport library.entities.Loan;[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mpublic class ReturnBookControl {[m[41m[m
+[32m+[m[41m[m
+[32m+[m	[32mprivate ReturnBookUI Ui;[m[41m[m
+[32m+[m	[32mprivate enum controlState { initialised, ready, inspecting };[m[41m[m
+[32m+[m	[32mprivate controlState state;[m[41m[m
+[32m+[m[41m	[m
+[32m+[m	[32mprivate Library library;[m[41m[m
+[32m+[m	[32mprivate Loan currentLoan;[m[41m[m
+[32m+[m[41m	[m
+[32m+[m[41m[m
+[32m+[m	[32mpublic ReturnBookControl() {[m[41m[m
+[32m+[m		[32mthis.library= Library.GeTiNsTaNcE();[m[41m[m
+[32m+[m		[32mstate = controlState.initialised;[m[41m[m
+[32m+[m	[32m}[m[41m[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m	[32mpublic void setUI(ReturnBookUI Ui) {[m[41m[m
+[32m+[m		[32mif (!state.equals(controlState.initialised))[m[41m [m
+[32m+[m			[32mthrow new RuntimeException("ReturnBookControl: cannot call setUI except in INITIALISED state");[m[41m[m
+[32m+[m[41m		[m
+[32m+[m		[32mthis.Ui = Ui;[m[41m[m
+[32m+[m		[32muI.setState(ReturnBookUI.uiState.READY);[m[41m[m
+[32m+[m		[32mstate = controlStateREADY;[m[41m		[m
+[32m+[m	[32m}[m[41m[m
+[32m+[m[41m[m
+[32m+[m[41m[m
+[32m+[m	[32mpublic void bookScanned(int bookId) {[m[41m[m
+[32m+[m		[32mif (!state.equals(controlState.ready))[m[41m [m
+[32m+[m			[32mthrow new RuntimeException("ReturnBookControl: cannot call bookScanned except in READY state");[m[41m[m
+[32m+[m[41m		[m
+[32m+[m		[32mBook currentBook = library.getBook(bookId);[m[41m[m
+[32m+[m[41m		[m
+[32m+[m		[32mif (currentBook == null) {[m[41m[m
+[32m+[m			[32mUi.display("Invalid Book Id");[m[41m[m
+[32m+[m			[32mreturn;[m[41m[m
+[32m+[m		[32m}[m[41m[m
+[32m+[m		[32mif (!currentBook.isOnLoan()) {[m[41m[m
+[32m+[m			[32mUi.display("Book has not been borrowed");[m[41m[m
+[32m+[m			[32mreturn;[m[41m[m
+[32m+[m		[32m}[m[41m		[m
+[32m+[m		[32mcurrentLoan = library.getLoanByBookId(bookId);[m[41m	[m
+[32m+[m		[32mdouble overDueFine = 0.0;[m[41m[m
+[32m+[m		[32mif (currentLoan.isOverDue())[m[41m [m
+[32m+[m			[32moverDueFine = library.calculateOverDueFine(currentLoan);[m[41m[m
+[32m+[m[41m		[m
+[32m+[m		[32mUi.display("Inspecting");[m[41m[m
+[32m+[m		[32mUi.display(currentBook.toString());[m[41m[m
+[32m+[m		[32mUi.display(currentLoan.toString());[m[41m[m
+[32m+[m[41m		[m
+[32m+[m		[32mif (currentLoan.isOverDue())[m[41m [m
+[32m+[m			[32mUi.display(String.format("\nOverdue fine : $%.2f", overDueFine));[m[41m[m
+[32m+[m[41m		[m
+[32m+[m		[32mUi.setState(ReturnBookUI.uiState.inspecting);[m[41m[m
+[32m+[m		[32mstate = controlState.inspecting;[m[41m		[m
+[32m+[m	[32m}[m[41m[m
+[32m+[m[41m[m
+[32m+[m[41m[m
+[32m+[m	[32mpublic void scanningComplete() {[m[41m[m
+[32m+[m		[32mif (!state.equals(controlState.ready))[m[41m [m
+[32m+[m			[32mthrow new RuntimeException("ReturnBookControl: cannot call scanningComplete except in READY state");[m[41m[m
+[32m+[m[41m			[m
+[32m+[m		[32mUi.setState(ReturnBookUI.uiState.completed);[m[41m		[m
+[32m+[m	[32m}[m[41m[m
+[32m+[m[41m[m
+[32m+[m[41m[m
+[32m+[m	[32mpublic void dIsChArGe_lOaN(boolean iS_dAmAgEd) {[m[41m[m
+[32m+[m		[32mif (!state.equals(controlState.inspecting))[m[41m [m
+[32m+[m			[32mthrow new RuntimeException("ReturnBookControl: cannot call dischargeLoan except in INSPECTING state");[m[41m[m
+[32m+[m[41m		[m
+[32m+[m		[32mlibrary.DiScHaRgE_LoAn(currentLoan, iS_dAmAgEd);[m[41m[m
+[32m+[m		[32mcurrentLoan = null;[m[41m[m
+[32m+[m		[32mUi.sEt_sTaTe(ReturnBookUI.uI_sTaTe.ready);[m[41m[m
+[32m+[m		[32mstate = controlState.ready;[m[41m				[m
+[32m+[m	[32m}[m[41m[m
+[32m+[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m}[m[41m[m
+[1mdiff --git a/src/library/returnBook/ReturnBookUI.java b/src/library/returnBook/ReturnBookUI.java[m
+[1mindex ec4950c..d303245 100644[m
+[1m--- a/src/library/returnBook/ReturnBookUI.java[m
+[1m+++ b/src/library/returnBook/ReturnBookUI.java[m
+[36m@@ -39,12 +39,12 @@[m [mpublic class ReturnBookUI {[m
+ 			case ready:[m
+ 				String bookInputString = input("Scan Book (<enter> completes): ");[m
+ 				if (bookInputString.length() == 0) [m
+[31m-					control.sCaNnInG_cOmPlEtE();[m
+[32m+[m					[32mcontrol.scanningComplete();[m[41m[m
+ 				[m
+ 				else {[m
+ 					try {[m
+ 						int bookId = Integer.valueOf(bookInputString).intValue();[m
+[31m-						control.bOoK_sCaNnEd(bookId);[m
+[32m+[m						[32mcontrol.bookScanned(bookId);[m[41m[m
+ 					}[m
+ 					catch (NumberFormatException e) {[m
+ 						output("Invalid bookId");[m
+[36m@@ -58,7 +58,7 @@[m [mpublic class ReturnBookUI {[m
+ 				if (ans.toUpperCase().equals("Y")) 					[m
+ 					isDamaged = true;[m
+ 				[m
+[31m-				control.dIsChArGe_lOaN(isDamaged);[m
+[32m+[m				[32mcontrol.dischargeLoan(isDamaged);[m[41m[m
+ 			[m
+ 			case completed:[m
+ 				output("Return processing complete");[m
+[1mdiff --git a/src/library/returnBook/rETURN_bOOK_cONTROL.java b/src/library/returnBook/rETURN_bOOK_cONTROL.java[m
+[1mdeleted file mode 100644[m
+[1mindex b0c9f0c..0000000[m
+[1m--- a/src/library/returnBook/rETURN_bOOK_cONTROL.java[m
+[1m+++ /dev/null[m
+[36m@@ -1,82 +0,0 @@[m
+[31m-package library.returnBook;[m
+[31m-import library.entities.Book;[m
+[31m-import library.entities.Library;[m
+[31m-import library.entities.Loan;[m
+[31m-[m
+[31m-public class rETURN_bOOK_cONTROL {[m
+[31m-[m
+[31m-	private ReturnBookUI Ui;[m
+[31m-	private enum cOnTrOl_sTaTe { INITIALISED, READY, INSPECTING };[m
+[31m-	private cOnTrOl_sTaTe sTaTe;[m
+[31m-	[m
+[31m-	private Library lIbRaRy;[m
+[31m-	private Loan CurrENT_loan;[m
+[31m-	[m
+[31m-[m
+[31m-	public rETURN_bOOK_cONTROL() {[m
+[31m-		this.lIbRaRy = Library.GeTiNsTaNcE();[m
+[31m-		sTaTe = cOnTrOl_sTaTe.INITIALISED;[m
+[31m-	}[m
+[31m-	[m
+[31m-	[m
+[31m-	public void sEt_uI(ReturnBookUI uI) {[m
+[31m-		if (!sTaTe.equals(cOnTrOl_sTaTe.INITIALISED)) [m
+[31m-			throw new RuntimeException("ReturnBookControl: cannot call setUI except in INITIALISED state");[m
+[31m-		[m
+[31m-		this.Ui = uI;[m
+[31m-		uI.sEt_sTaTe(ReturnBookUI.uI_sTaTe.READY);[m
+[31m-		sTaTe = cOnTrOl_sTaTe.READY;		[m
+[31m-	}[m
+[31m-[m
+[31m-[m
+[31m-	public void bOoK_sCaNnEd(int bOoK_iD) {[m
+[31m-		if (!sTaTe.equals(cOnTrOl_sTaTe.READY)) [m
+[31m-			throw new RuntimeException("ReturnBookControl: cannot call bookScanned except in READY state");[m
+[31m-		[m
+[31m-		Book cUrReNt_bOoK = lIbRaRy.gEt_BoOk(bOoK_iD);[m
+[31m-		[m
+[31m-		if (cUrReNt_bOoK == null) {[m
+[31m-			Ui.DiSpLaY("Invalid Book Id");[m
+[31m-			return;[m
+[31m-		}[m
+[31m-		if (!cUrReNt_bOoK.iS_On_LoAn()) {[m
+[31m-			Ui.DiSpLaY("Book has not been borrowed");[m
+[31m-			return;[m
+[31m-		}		[m
+[31m-		CurrENT_loan = lIbRaRy.GeT_LoAn_By_BoOkId(bOoK_iD);	[m
+[31m-		double Over_Due_Fine = 0.0;[m
+[31m-		if (CurrENT_loan.Is_OvEr_DuE()) [m
+[31m-			Over_Due_Fine = lIbRaRy.CaLcUlAtE_OvEr_DuE_FiNe(CurrENT_loan);[m
+[31m-		[m
+[31m-		Ui.DiSpLaY("Inspecting");[m
+[31m-		Ui.DiSpLaY(cUrReNt_bOoK.toString());[m
+[31m-		Ui.DiSpLaY(CurrENT_loan.toString());[m
+[31m-		[m
+[31m-		if (CurrENT_loan.Is_OvEr_DuE()) [m
+[31m-			Ui.DiSpLaY(String.format("\nOverdue fine : $%.2f", Over_Due_Fine));[m
+[31m-		[m
+[31m-		Ui.sEt_sTaTe(ReturnBookUI.uI_sTaTe.INSPECTING);[m
+[31m-		sTaTe = cOnTrOl_sTaTe.INSPECTING;		[m
+[31m-	}[m
+[31m-[m
+[31m-[m
+[31m-	public void sCaNnInG_cOmPlEtE() {[m
+[31m-		if (!sTaTe.equals(cOnTrOl_sTaTe.READY)) [m
+[31m-			throw new RuntimeException("ReturnBookControl: cannot call scanningComplete except in READY state");[m
+[31m-			[m
+[31m-		Ui.sEt_sTaTe(ReturnBookUI.uI_sTaTe.COMPLETED);		[m
+[31m-	}[m
+[31m-[m
+[31m-[m
+[31m-	public void dIsChArGe_lOaN(boolean iS_dAmAgEd) {[m
+[31m-		if (!sTaTe.equals(cOnTrOl_sTaTe.INSPECTING)) [m
+[31m-			throw new RuntimeException("ReturnBookControl: cannot call dischargeLoan except in INSPECTING state");[m
+[31m-		[m
+[31m-		lIbRaRy.DiScHaRgE_LoAn(CurrENT_loan, iS_dAmAgEd);[m
+[31m-		CurrENT_loan = null;[m
+[31m-		Ui.sEt_sTaTe(ReturnBookUI.uI_sTaTe.READY);[m
+[31m-		sTaTe = cOnTrOl_sTaTe.READY;				[m
+[31m-	}[m
+[31m-[m
+[31m-[m
+[31m-}[m

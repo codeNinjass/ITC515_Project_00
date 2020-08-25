@@ -85,81 +85,80 @@ public class Library implements Serializable {
 	}
 
 	
-	public int getBookID() {		//gEt_BoOkId-->getBookID
-		return bookID;		//bOoK_Id-->bookID
+	public int getBookId() {		//gEt_BoOkId-->getBookId
+		return bookId;		//bOoK_Id-->bookId
 	}
 	
 	
-	public int getMemberID() {		//gEt_MeMbEr_Id-->getMemberID
-		return memberID;		//mEmBeR_Id-->memberID
+	public int getMemberId() {		//gEt_MeMbEr_Id-->getMemberId
+		return memberId;		//mEmBeR_Id-->memberId
 	}
 	
 	
-	private int getNextBookID() {		//gEt_NeXt_BoOk_Id-->getNextBookID
-		return bookID++;		//bOoK_Id-->bookID
-	}
-
-	
-	private int getNextMemberID() {		//gEt_NeXt_MeMbEr_Id-->getNextMemberID
-		return memberID++;		//mEmBeR_Id++-->memberID++
-	}
-
-//the below code is not updated................	
-	private int gEt_NeXt_LoAn_Id() {
-		return lOaN_Id++;
+	private int getNextBookId() {		//gEt_NeXt_BoOk_Id-->getNextBookId
+		return bookId++;		//bOoK_Id-->bookId
 	}
 
 	
-	public List<Member> lIsT_MeMbErS() {		
-		return new ArrayList<Member>(MeMbErS.values()); 
+	private int getNextMemberId() {		//gEt_NeXt_MeMbEr_Id-->getNextMemberId
+		return memberId++;		//mEmBeR_Id++-->memberId++
+	}
+
+	private int getNextLoanId() {		//gEt_NeXt_LoAn_Id --> getNextLoanId
+		return loanId++;				//lOaN_Id -->loanId
+	}
+
+	
+	public List<Member> listMembers() {		//lIsT_MeMbErS --> listMembers
+		return new ArrayList<Member>(members.values()); 	//MeMberS --> members	
 	}
 
 
 	public List<Book> lIsT_BoOkS() {		
-		return new ArrayList<Book>(CaTaLoG.values()); 
+		return new ArrayList<Book>(catalog.values()); 	//CaTaLoG -->catalog
 	}
 
 
 	public List<Loan> lISt_CuRrEnT_LoAnS() {
-		return new ArrayList<Loan>(CuRrEnT_LoAnS.values());
+		return new ArrayList<Loan>(currentLoans.values());	//CuRrEnT_LoAnS-->currentLoans
 	}
 
 
 	public Member aDd_MeMbEr(String lastName, String firstName, String email, int phoneNo) {		
 		Member member = new Member(lastName, firstName, email, phoneNo, gEt_NeXt_MeMbEr_Id());
-		MeMbErS.put(member.GeT_ID(), member);		
+		members.put(member.GeT_ID(), member);		//MeMbErS-->members		
 		return member;
 	}
 
 	
 	public Book aDd_BoOk(String a, String t, String c) {		
 		Book b = new Book(a, t, c, gEt_NeXt_BoOk_Id());
-		CaTaLoG.put(b.gEtId(), b);		
+		catalog.put(b.gEtId(), b);		//CaTaLoG -->catalog
 		return b;
 	}
 
 	
 	public Member gEt_MeMbEr(int memberId) {
-		if (MeMbErS.containsKey(memberId)) 
-			return MeMbErS.get(memberId);
+		if (members.containsKey(memberId)) 			//MeMbErs --> members
+			return members.get(memberId);
 		return null;
 	}
 
 	
 	public Book gEt_BoOk(int bookId) {
-		if (CaTaLoG.containsKey(bookId)) 
-			return CaTaLoG.get(bookId);		
+		if (catalog.containsKey(bookId)) 	//CaTaLoG -->catalog
+			return catalog.get(bookId);		
 		return null;
 	}
 
 	
 	public int gEt_LoAn_LiMiT() {
-		return lOaNlImIt;
+		return loanLimit;			//lOaNlImIt-->loanLimit
 	}
 
 	
 	public boolean cAn_MeMbEr_BoRrOw(Member member) {		
-		if (member.gEt_nUmBeR_Of_CuRrEnT_LoAnS() == lOaNlImIt ) 
+		if (member.gEt_nUmBeR_Of_CuRrEnT_LoAnS() == loanLimit ) 
 			return false;
 				
 		if (member.FiNeS_OwEd() >= maxFinesOwed) 
@@ -173,8 +172,8 @@ public class Library implements Serializable {
 	}
 
 	
-	public int gEt_NuMbEr_Of_LoAnS_ReMaInInG_FoR_MeMbEr(Member MeMbEr) {		
-		return lOaNlImIt - MeMbEr.gEt_nUmBeR_Of_CuRrEnT_LoAnS();
+	public int gEt_NuMbEr_Of_LoAnS_ReMaInInG_FoR_MeMbEr(Member member) {		
+		return loanLimit - member.gEt_nUmBeR_Of_CuRrEnT_LoAnS();		//MeMbEr --> member, lOaNlImIt -->loanLimit
 	}
 
 	
@@ -183,35 +182,35 @@ public class Library implements Serializable {
 		Loan loan = new Loan(gEt_NeXt_LoAn_Id(), book, member, dueDate);
 		member.TaKe_OuT_LoAn(loan);
 		book.BoRrOw();
-		LoAnS.put(loan.GeT_Id(), loan);
-		CuRrEnT_LoAnS.put(book.gEtId(), loan);
+		loans.put(loan.GeT_Id(), loan);			//LoAnS --> loans
+		currentLoans.put(book.gEtId(), loan);		//CuRrEnT_LoAnS--> currentLoans
 		return loan;
 	}
 	
 	
 	public Loan GeT_LoAn_By_BoOkId(int bookId) {
-		if (CuRrEnT_LoAnS.containsKey(bookId)) 
-			return CuRrEnT_LoAnS.get(bookId);
+		if (currentLoans.containsKey(bookId)) 			//CuRrEnT_LoAnS --> currentLoans
+			return currentLoans.get(bookId);
 		
 		return null;
 	}
 
 	
-	public double CaLcUlAtE_OvEr_DuE_FiNe(Loan LoAn) {
-		if (LoAn.Is_OvEr_DuE()) {
-			long DaYs_OvEr_DuE = Calendar.gEtInStAnCe().GeT_DaYs_DiFfErEnCe(LoAn.GeT_DuE_DaTe());
-			double fInE = DaYs_OvEr_DuE * FiNe_PeR_DaY;
-			return fInE;
+	public double CaLcUlAtE_OvEr_DuE_FiNe(Loan loan) {
+		if (loan.Is_OvEr_DuE()) {
+			long daysOverDue = Calendar.gEtInStAnCe().GeT_DaYs_DiFfErEnCe(loan.GeT_DuE_DaTe()); 	//DaYs_OvEr_DuE-->daysOverDue
+			double fine = daysOverDue * finePerDay;			//fInE --> fine,	FiNe_PeR_DaY-->finePerDay
+			return fine;
 		}
 		return 0.0;		
 	}
 
 
-	public void DiScHaRgE_LoAn(Loan cUrReNt_LoAn, boolean iS_dAmAgEd) {
-		Member mEmBeR = cUrReNt_LoAn.GeT_MeMbEr();
-		Book bOoK  = cUrReNt_LoAn.GeT_BoOk();
+	public void DiScHaRgE_LoAn(Loan currentLoan, boolean isDamaged) {		//cUrReNt_LoAn-->currentLoan, iS_dAmAgEd-->isDamaged
+		Member member = currentLoan.GeT_MeMbEr();
+		Book book  = currentLoan.GeT_BoOk();
 		
-		double oVeR_DuE_FiNe = CaLcUlAtE_OvEr_DuE_FiNe(cUrReNt_LoAn);
+		double oVeR_DuE_FiNe = CaLcUlAtE_OvEr_DuE_FiNe(currentLoan);		//cUrReNt_LoAn -->currentLoan
 		mEmBeR.AdD_FiNe(oVeR_DuE_FiNe);	
 		
 		mEmBeR.dIsChArGeLoAn(cUrReNt_LoAn);
