@@ -158,14 +158,14 @@ public class Library implements Serializable {
 
 	
 	public boolean canMemberBorrow(Member member) {		//cAn_MeMbEr_BoRrOw-->canMemberBorrow	
-		if (member.gEt_nUmBeR_Of_CuRrEnT_LoAnS() == loanLimit ) 
+		if (member.getNumberOfCurrentLoans() == loanLimit )	//gEt_nUmBeR_Of_CuRrEnT_LoAnS-->getNumberOfCurrentLoans 
 			return false;
 				
-		if (member.FiNeS_OwEd() >= maxFinesOwed) 
+		if (member.finesOwned() >= maxFinesOwed) 
 			return false;
 				
-		for (Loan loan : member.GeT_LoAnS()) 
-			if (loan.Is_OvEr_DuE()) 
+		for (Loan loan : member.getLoans()) 
+			if (loan.isOverDue()) 
 				return false;
 			
 		return true;
