@@ -125,15 +125,19 @@ public class Library implements Serializable {
 
 
 	public Member addMember(String lastName, String firstName, String email, int phoneNo) {		
-		Member member = new Member(lastName, firstName, email, phoneNo, getNextMemberId());	//gEt_NeXt_MeMbEr_Id-->getNextMemberId
-		members.put(member.getId(), member);		//MeMbErS-->members		
+		int memId = getNextMemberId(); 
+		Member member = new Member(lastName, firstName, email, phoneNo, memId);	//gEt_NeXt_MeMbEr_Id-->getNextMemberId
+		int id = member.getId();
+		members.put(id, member);		//MeMbErS-->members		
 		return member;
 	}
 
 	
-	public Book addBook(String a, String t, String c) {		
-		Book b = new Book(a, t, c, getNextBookId());		//gEt_NeXt_BoOk_Id-->getNextBookId
-		catalog.put(b.getId(), b);		//CaTaLoG -->catalog
+	public Book addBook(String a, String t, String c) {
+		int nextBookId = getNextBookId();		
+		Book b = new Book(a, t, c, nextBookId);		//gEt_NeXt_BoOk_Id-->getNextBookId
+		int id = b.getId();
+		catalog.put(id, b);		//CaTaLoG -->catalog
 		return b;
 	}
 
@@ -238,8 +242,6 @@ public class Library implements Serializable {
 		}
 		else 
 			throw new RuntimeException("Library: repairBook: book is not damaged");
-		
-		
 	}
 	
 	
