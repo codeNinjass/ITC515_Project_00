@@ -183,11 +183,14 @@ public class Library implements Serializable {
 	
 	public Loan issueLoan(Book book, Member member) {
 		Date dueDate = Calendar.getInstance().getDueDate(loanPeriod);
-		Loan loan = new Loan(getNextLoanId(), book, member, dueDate);
+		int nextLoanId = getNextLoanId();
+		Loan loan = new Loan(NextLoanId, book, member, dueDate);
 		member.takeOutLoan(loan);
 		book.borrow();
-		loans.put(loan.getId(), loan);			//LoAnS --> loans
-		currentLoans.put(book.getId(), loan);		//CuRrEnT_LoAnS--> currentLoans
+		int lId = loan.getId();
+		loans.put(lId, loan);			//LoAnS --> loans
+		int bId = book.getId();
+		currentLoans.put(bId, loan);		//CuRrEnT_LoAnS--> currentLoans
 		return loan;
 	}
 	
@@ -221,7 +224,8 @@ public class Library implements Serializable {
 		book.return(isDamaged);
 		if (isDamaged) {
 			member.AddFine(damageFee);
-			damagedBooks.put(booK.getId(), booK);
+			int bId = book.getId();
+			damagedBooks.put(bId, booK);
 		}
 		currentLoan.discharge();
 		currentLoans.remove(booK.getId());
@@ -238,7 +242,7 @@ public class Library implements Serializable {
 	public void repairBook(Book currentBook) {
 		if (damagedBooks.containsKey(currentBook.getId())) {		
 			currentBook.repair();
-			damagedBooks.remove(currentBook.getId());
+		    damagedBooks.remove(currentBook.getId());
 		}
 		else 
 			throw new RuntimeException("Library: repairBook: book is not damaged");
