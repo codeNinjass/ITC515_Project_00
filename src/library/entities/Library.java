@@ -114,50 +114,50 @@ public class Library implements Serializable {
 	}
 
 
-	public List<Book> lIsT_BoOkS() {		
+	public List<Book> listBooks() {		//lIsT_BoOkS --> listBooks	
 		return new ArrayList<Book>(catalog.values()); 	//CaTaLoG -->catalog
 	}
 
 
-	public List<Loan> lISt_CuRrEnT_LoAnS() {
+	public List<Loan> listCurrentLoans() {	//lISt_CuRrEnT_LoAnS -->listCurrentLoans
 		return new ArrayList<Loan>(currentLoans.values());	//CuRrEnT_LoAnS-->currentLoans
 	}
 
 
-	public Member aDd_MeMbEr(String lastName, String firstName, String email, int phoneNo) {		
-		Member member = new Member(lastName, firstName, email, phoneNo, gEt_NeXt_MeMbEr_Id());
-		members.put(member.GeT_ID(), member);		//MeMbErS-->members		
+	public Member addMember(String lastName, String firstName, String email, int phoneNo) {		
+		Member member = new Member(lastName, firstName, email, phoneNo, getNextMemberId());	//gEt_NeXt_MeMbEr_Id-->getNextMemberId
+		members.put(member.getId(), member);		//MeMbErS-->members		
 		return member;
 	}
 
 	
-	public Book aDd_BoOk(String a, String t, String c) {		
-		Book b = new Book(a, t, c, gEt_NeXt_BoOk_Id());
-		catalog.put(b.gEtId(), b);		//CaTaLoG -->catalog
+	public Book addBook(String a, String t, String c) {		
+		Book b = new Book(a, t, c, getNextBookId());		//gEt_NeXt_BoOk_Id-->getNextBookId
+		catalog.put(b.getId(), b);		//CaTaLoG -->catalog
 		return b;
 	}
 
 	
-	public Member gEt_MeMbEr(int memberId) {
+	public Member getMember(int memberId) {
 		if (members.containsKey(memberId)) 			//MeMbErs --> members
 			return members.get(memberId);
 		return null;
 	}
 
 	
-	public Book gEt_BoOk(int bookId) {
+	public Book getBook(int bookId) {
 		if (catalog.containsKey(bookId)) 	//CaTaLoG -->catalog
 			return catalog.get(bookId);		
 		return null;
 	}
 
 	
-	public int gEt_LoAn_LiMiT() {
+	public int getLoanLimit() {
 		return loanLimit;			//lOaNlImIt-->loanLimit
 	}
 
 	
-	public boolean cAn_MeMbEr_BoRrOw(Member member) {		
+	public boolean canMemberBorrow(Member member) {		//cAn_MeMbEr_BoRrOw-->canMemberBorrow	
 		if (member.gEt_nUmBeR_Of_CuRrEnT_LoAnS() == loanLimit ) 
 			return false;
 				
