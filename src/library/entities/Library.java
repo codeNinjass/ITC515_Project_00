@@ -210,17 +210,17 @@ public class Library implements Serializable {
 		Member member = currentLoan.getMember();
 		Book book  = currentLoan.getBook();
 		
-		double overDueFine = CaLcUlAtE_OvEr_DuE_FiNe(currentLoan);		//cUrReNt_LoAn -->currentLoan, oVeR_DuE_FiNe--> overDueFine
-		member.AdD_FiNe(overDueFine);	
+		double overDueFine = calculateOverDueFine(currentLoan);		//cUrReNt_LoAn -->currentLoan, oVeR_DuE_FiNe--> overDueFine
+		member.addFine(overDueFine);	
 		
-		member.dIsChArGeLoAn(currentLoan);		//cUrReNt_LoAn -->currentLoan
-		book.ReTuRn(iS_dAmAgEd);
-		if (iS_dAmAgEd) {
-			member.AdD_FiNe(damageFee);
-			damagedBooks.put(bOoK.gEtId(), bOoK);
+		member.dischargeLoan(currentLoan);		//cUrReNt_LoAn -->currentLoan
+		book.return(isDamaged);
+		if (isDamaged) {
+			member.AddFine(damageFee);
+			damagedBooks.put(booK.getId(), booK);
 		}
-		currentLoan.DiScHaRgE();
-		currentLoans.remove(bOoK.gEtId());
+		currentLoan.discharge();
+		currentLoans.remove(booK.getId());
 	}
 
 	//lOaN -->loan  , CuRrEnT_LoAnS-->currentLoans
