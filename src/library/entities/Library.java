@@ -210,31 +210,31 @@ public class Library implements Serializable {
 		Member member = currentLoan.GeT_MeMbEr();
 		Book book  = currentLoan.GeT_BoOk();
 		
-		double oVeR_DuE_FiNe = CaLcUlAtE_OvEr_DuE_FiNe(currentLoan);		//cUrReNt_LoAn -->currentLoan
-		mEmBeR.AdD_FiNe(overDueFine);	
+		double overDueFine = CaLcUlAtE_OvEr_DuE_FiNe(currentLoan);		//cUrReNt_LoAn -->currentLoan, oVeR_DuE_FiNe--> overDueFine
+		member.AdD_FiNe(overDueFine);	
 		
-		mEmBeR.dIsChArGeLoAn(currentLoan);		//cUrReNt_LoAn -->currentLoan
-		bOoK.ReTuRn(iS_dAmAgEd);
+		member.dIsChArGeLoAn(currentLoan);		//cUrReNt_LoAn -->currentLoan
+		book.ReTuRn(iS_dAmAgEd);
 		if (iS_dAmAgEd) {
-			mEmBeR.AdD_FiNe(damageFee);
-			DaMaGeD_BoOkS.put(bOoK.gEtId(), bOoK);
+			member.AdD_FiNe(damageFee);
+			damagedBooks.put(bOoK.gEtId(), bOoK);
 		}
-		cUrReNt_LoAn.DiScHaRgE();
-		CuRrEnT_LoAnS.remove(bOoK.gEtId());
+		currentLoan.DiScHaRgE();
+		currentLoans.remove(bOoK.gEtId());
 	}
 
-
+	//lOaN -->loan  , CuRrEnT_LoAnS-->currentLoans
 	public void cHeCk_CuRrEnT_LoAnS() {
-		for (Loan lOaN : CuRrEnT_LoAnS.values()) 
-			lOaN.cHeCk_OvEr_DuE();
+		for (Loan loan : currentLoans.values()) 
+			loan.cHeCk_OvEr_DuE();
 				
 	}
 
-
-	public void RePaIr_BoOk(Book cUrReNt_BoOk) {
-		if (DaMaGeD_BoOkS.containsKey(cUrReNt_BoOk.gEtId())) {
-			cUrReNt_BoOk.RePaIr();
-			DaMaGeD_BoOkS.remove(cUrReNt_BoOk.gEtId());
+//cUrReNt_BoOk --> currentBook, DaMaGeD_BoOkS-->damagedBooks
+	public void RePaIr_BoOk(Book currentBook) {
+		if (damagedBooks.containsKey(currentBook.gEtId())) {		
+			currentBook.RePaIr();
+			damagedBooks.remove(currentBook.gEtId());
 		}
 		else 
 			throw new RuntimeException("Library: repairBook: book is not damaged");
