@@ -11,7 +11,7 @@ import java.util.Date;
 @SuppressWarnings("serial")
 public class Loan implements Serializable {
 	
-	public static enum LoanState { current, overdue, discharged }; // change class name from lOaN_sTaTe to LoanState and OVER_DUE to overdue
+	public static enum LoanState { CURRENT, OVERDUE, DISCHARGED }; // change class name from lOaN_sTaTe to LoanState and OVER_DUE to OVERDUE
 	
 	// changed varriable name and class name 
 	private int loanId; // changed LoAn_Id to loanId
@@ -26,20 +26,20 @@ public class Loan implements Serializable {
 		this.Book = book;
 		this.Member = member;
 		this.Date = dueDate;
-		this.state = LoanState.current; 
+		this.state = LoanState.CURRENT; 
 	}
 
 	
-	public void checkOverDue() { // changed method name from cHeCk_OvEr_DuE to checkOverDue
-		if (state == LoanState.current &&
+	public void checkOVERDUE() { // changed method name from cHeCk_OvEr_DuE to checkOVERDUE
+		if (state == LoanState.CURRENT &&
 			Calendar.getInstance().getDate().after(Date)) 
-			this.state = LoanState.overdue;			
+			this.state = LoanState.OVERDUE;			
 		
 	}
 
 	
-	public boolean isOverDue() { // changed method name from Is_OvEr_DuE to isOverDue
-		return state == LoanState.overdue;
+	public boolean isOVERDUE() { // changed method name from Is_OvEr_DuE to isOVERDUE
+		return state == LoanState.OVERDUE;
 	}
 
 	
@@ -49,7 +49,7 @@ public class Loan implements Serializable {
 
 
 	public Date getDueDate() { //  changed method name fromGeT_DuE_DaTe to getDueDate
-		return date;
+		return dueDate;
 	}
 	
 	
