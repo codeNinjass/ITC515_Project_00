@@ -12,51 +12,51 @@ public class FixBookControl {
 	private Book currentBook;
 
 
-	public fIX_bOOK_cONTROL() {
-		this.library = library.GeTiNsTaNcE();
+	public fixBookControl() {			//fIX_bOOK_cONTROL-->fixBookControl
+		this.library = library.getInstance();		//GeTiNsTaNcE --> getInstance
 		state = CoNtRoL_StAtE.INITIALISED;		//StAtE-->state
 	}
 	
 	
-	public void SeT_Ui(FixBookUi ui) {
+	public void setUi(FixBookUi ui) {
 		if (!state.equals(CoNtRoL_StAtE.INITIALISED)) 
 			throw new RuntimeException("FixBookControl: cannot call setUI except in INITIALISED state");
 			
 		this.Ui = ui;
-		ui.SeT_StAtE(FixBookUI.uI_sTaTe.READY);
+		ui.setState(FixBookUI.uiState.READY);
 		state = CoNtRoL_StAtE.READY;		//StAtE --> state		
 	}
 
 
-	public void BoOk_ScAnNeD(int bookId) {		//BoOkId --> bookId
+	public void bookScanned(int bookId) {		//BoOkId --> bookId
 		if (!state.equals(CoNtRoL_StAtE.READY)) 
 			throw new RuntimeException("FixBookControl: cannot call bookScanned except in READY state");
 			
-		currentBook = library.gEt_BoOk(bookId);		//LiBrArY-->library, BoOkId --> bookId, CuRrEnT_BoOk = currentBook
+		currentBook = library.getBook(bookId);		//LiBrArY-->library, BoOkId --> bookId, CuRrEnT_BoOk = currentBook
 		
 		if (currentBook == null) {			//CuRrEnT_BoOk --> currentBook
-			Ui.dIsPlAy("Invalid bookId");
+			Ui.display("Invalid bookId");		//dIsPlAy --> display
 			return;
 		}
-		if (!currentBook.iS_DaMaGeD()) {
-			Ui.dIsPlAy("Book has not been damaged");
+		if (!currentBook.isDamaged()) {		//iS_DaMaGeD --> isDamaged
+			Ui.display("Book has not been damaged");
 			return;
 		}
-		Ui.dIsPlAy(currentBook.toString());
-		Ui.SeT_StAtE(FixBookUI.uI_sTaTe.FIXING);
+		Ui.display(currentBook.toString());
+		Ui.setState(FixBookUI.uiState.FIXING);
 		state = CoNtRoL_StAtE.FIXING;		
 	}
 
 
-	public void FiX_BoOk(boolean mustFix) {
+	public void fixBook(boolean mustFix) {		//FiX_BoOk-->fixBook
 		if (!state.equals(CoNtRoL_StAtE.FIXING)) 
 			throw new RuntimeException("FixBookControl: cannot call fixBook except in FIXING state");
 			
 		if (mustFix) 
-			library.RePaIr_BoOk(currentBook);
+			library.repairBook(currentBook);		//RePaIr_BoOk --> repairBook
 		
 		currentBook = null;
-		Ui.SeT_StAtE(FixBookUI.uI_sTaTe.READY);
+		Ui.setState(FixBookUI.uI_sTaTe.READY);
 		state = CoNtRoL_StAtE.READY;		
 	}
 
