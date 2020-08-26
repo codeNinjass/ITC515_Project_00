@@ -53,16 +53,16 @@ public class fIX_bOOK_cONTROL {
 			throw new RuntimeException("FixBookControl: cannot call fixBook except in FIXING state");
 			
 		if (mustFix) 
-			library.RePaIr_BoOk(CuRrEnT_BoOk);
+			library.RePaIr_BoOk(currentBook);
 		
-		CuRrEnT_BoOk = null;
+		currentBook = null;
 		Ui.SeT_StAtE(FixBookUI.uI_sTaTe.READY);
-		StAtE = CoNtRoL_StAtE.READY;		
+		state = CoNtRoL_StAtE.READY;		
 	}
 
 	
 	public void SCannING_COMplete() {
-		if (!StAtE.equals(CoNtRoL_StAtE.READY)) 
+		if (!state.equals(CoNtRoL_StAtE.READY)) 
 			throw new RuntimeException("FixBookControl: cannot call scanningComplete except in READY state");
 			
 		Ui.SeT_StAtE(FixBookUI.uI_sTaTe.COMPLETED);		
