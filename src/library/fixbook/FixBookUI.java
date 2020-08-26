@@ -4,19 +4,19 @@ import java.util.Scanner;	//Import scanner class
 
 public class FixBookUI {  // define class called FixBookUI
 
-	public static enum u_sTaTe { INITIALISED, READY, FIXING, COMPLETED };
+	public static enum Ustate { INITIALISED, READY, FIXING, COMPLETED };	//u_sTaTe -->Ustate
 
-	private FixBookControl control; //using standard naming convention for variable name and its data type 
-	private Scanner input;	//usiing standard naming convention for variable name and its data type
-	private UiState state;	// using standard naming convention for variable name and its data type
+	private FixBookControl control; 
+	private Scanner input;	
+	private UiState state;	
 
 
 	
-	public FixBookUI(FixBookControl control) {
+	public FixBookUi(FixBookControl control) {
 		this.control = control;
 		input = new Scanner(System.in);
 		state = UiState.INITIALISED;
-		control.SeT_Ui(this);
+		control.setUi(this);	//SeT_Ui --> setUi
 	}
 
 
@@ -26,16 +26,15 @@ public class FixBookUI {  // define class called FixBookUI
 
 	
 	public void run() {		//Change function name to universal adopted form. RuN --> run
-		OuTpUt("Fix Book Use Case UI\n");
+		output("Fix Book Use Case UI\n");
 		
 		while (true) {
-			
 			switch (state) {
-			
 			case READY:
-				String BoOk_EnTrY_StRiNg = iNpUt("Scan Book (<enter> completes): ");
-				if (BoOk_EnTrY_StRiNg.length() == 0) 
-					control.SCannING_COMplete();
+				String bookEntryString = iNpUt("Scan Book (<enter> completes): ");	//BoOk_EnTrY_StRiNg-->bookEntryString
+				if (BoOk_EnTrY_StRiNg.length() == 0) {}
+					control.scanningComplete();	
+				}
 				
 				else {
 					try {
@@ -53,7 +52,7 @@ public class FixBookUI {  // define class called FixBookUI
 				boolean FiX = false;
 				if (AnS.toUpperCase().equals("Y")) 
 					FiX = true;
-				
+				gi
 				control.FiX_BoOk(FiX);
 				break;
 								
