@@ -19,7 +19,7 @@ public class Book implements Serializable {
 	private StateOfBook state; //changed to state
 	
 	
-	public Book(String author, String title, String callNo, int id) {
+	public Book(String author, String title, String callNo, int bookId) { //changed to bookId and callNumber
 		this.AuThOr = author;
 		this.tItLe = title;
 		this.CALLNO = callNo;
