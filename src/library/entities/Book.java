@@ -10,10 +10,10 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class Book implements Serializable {
 	
-	private String tItLe;
-	private String AuThOr;
-	private String CALLNO;
-	private int iD;
+	private String title; //changed to title
+	private String author; //changed to author
+	private String callNumber; //changed to callNumber
+	private int bookId; //changed to bookId
 	
 	private enum sTaTe { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };
 	private sTaTe StAtE;
