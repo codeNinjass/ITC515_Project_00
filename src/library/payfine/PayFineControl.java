@@ -18,7 +18,11 @@ public class PayFineControl { // changing class name as per standard coding conv
 
 
 	public PayFineControl() { 
+<<<<<<< Updated upstream
 		this.library = library.GeTiNsTaNcE();
+=======
+		this.library = library.getInstance(); // changed GeTiNsTaNcE to getInstance
+>>>>>>> Stashed changes
 		state = Controlstate.INITIALISED;
 	}
 	
@@ -49,9 +53,15 @@ public class PayFineControl { // changing class name as per standard coding conv
 	}
 	
 	
+<<<<<<< Updated upstream
 	public void CaNcEl() { // changed method name as per standard coding convention from CaNcEl --> cancel
 		if (!state.equals(Controlstate.READY)) 
 		Ui.SeT_state(PayFineUI.uI_state.CANCELLED);
+=======
+	public void cancel() { // changed method name as per standard coding convention from CaNcEl --> cancel
+		if (!state.equals(Controlstate.READY)) 
+		Ui.setState(PayFineUI.uiState.CANCELLED); // changed SeT_state to setState and uI_state to uiState 
+>>>>>>> Stashed changes
 		state = Controlstate.CANCELLED;
 	}
 
