@@ -34,26 +34,26 @@ public class fIX_bOOK_cONTROL {
 			
 		currentBook = library.gEt_BoOk(bookId);		//LiBrArY-->library, BoOkId --> bookId, CuRrEnT_BoOk = currentBook
 		
-		if (CuRrEnT_BoOk == null) {
+		if (currentBook == null) {			//CuRrEnT_BoOk --> currentBook
 			Ui.dIsPlAy("Invalid bookId");
 			return;
 		}
-		if (!CuRrEnT_BoOk.iS_DaMaGeD()) {
+		if (!currentBook.iS_DaMaGeD()) {
 			Ui.dIsPlAy("Book has not been damaged");
 			return;
 		}
-		Ui.dIsPlAy(CuRrEnT_BoOk.toString());
+		Ui.dIsPlAy(currentBook.toString());
 		Ui.SeT_StAtE(FixBookUI.uI_sTaTe.FIXING);
-		StAtE = CoNtRoL_StAtE.FIXING;		
+		state = CoNtRoL_StAtE.FIXING;		
 	}
 
 
-	public void FiX_BoOk(boolean mUsT_FiX) {
-		if (!StAtE.equals(CoNtRoL_StAtE.FIXING)) 
+	public void FiX_BoOk(boolean mustFix) {
+		if (!state.equals(CoNtRoL_StAtE.FIXING)) 
 			throw new RuntimeException("FixBookControl: cannot call fixBook except in FIXING state");
 			
-		if (mUsT_FiX) 
-			LiBrArY.RePaIr_BoOk(CuRrEnT_BoOk);
+		if (mustFix) 
+			library.RePaIr_BoOk(CuRrEnT_BoOk);
 		
 		CuRrEnT_BoOk = null;
 		Ui.SeT_StAtE(FixBookUI.uI_sTaTe.READY);
