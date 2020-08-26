@@ -18,7 +18,7 @@ public class PayFineControl { // changing class name as per standard coding conv
 
 
 	public PayFineControl() { 
-		this.library = library.GeTiNsTaNcE();
+		this.library = library.getInstance();
 		state = Controlstate.INITIALISED;
 	}
 	
