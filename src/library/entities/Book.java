@@ -10,32 +10,32 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class Book implements Serializable {
 	
-	private String tItLe;
-	private String AuThOr;
-	private String CALLNO;
-	private int iD;
+	private String title; //changed to title
+	private String author; //changed to author
+	private String callNumber; //changed to callNumber
+	private int bookId; //changed to bookId
 	
-	private enum sTaTe { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };
-	private sTaTe StAtE;
+	private enum StateOfBook { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };//changed to StatedOfBook
+	private StateOfBook state; //changed to state
 	
 	
-	public Book(String author, String title, String callNo, int id) {
-		this.AuThOr = author;
-		this.tItLe = title;
-		this.CALLNO = callNo;
-		this.iD = id;
-		this.StAtE = sTaTe.AVAILABLE;
+	public Book(String author, String title, String callNo, int bookId) { //changed to bookId and callNumber
+		this.author = author; //changed to author
+		this.title = title; //changed to title
+		this.callNumber = callNumber; //changed to callNumber
+		this.bookId = id; //changed to bookId
+		this.state = StateOfBook.AVAILABLE; //changed to state and StateOfBook
 	}
 	
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("Book: ").append(iD).append("\n")
-		  .append("  Title:  ").append(tItLe).append("\n")
-		  .append("  Author: ").append(AuThOr).append("\n")
-		  .append("  CallNo: ").append(CALLNO).append("\n")
-		  .append("  State:  ").append(StAtE);
+		StringBuilder bookStringBuilder = new StringBuilder(); //changed to from sb->bookStringBuilder
+		sb.append("Book: ").append(this.bookId).append("\n") //changed to this.bookId
+		  .append("  Title:  ").append(this.title).append("\n") //changed to this.title
+		  .append("  Author: ").append(this.author).append("\n") //changed to this.author
+		  .append("  CallNo: ").append(this.callNumber).append("\n") //changed to this.callNumber
+		  .append("  State:  ").append(this.state); //changed to this.state
 		
-		return sb.toString();
+		return bookStringBuilder.toString();//changed to bookStringBuilder
 	}
 
 	public Integer gEtId() {

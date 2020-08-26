@@ -20,109 +20,112 @@ public class BorrowBookControl {  //bORROW_bOOK_cONTROL
 	private enum ControlState { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };//CONTROL_STATE->ControlState
 	private ControlState state; //CONTROL_STATE sTaTe->ControlState state
 	
-	private List<Book> pEnDiNg_LiSt;
-	private List<Loan> cOmPlEtEd_LiSt;
-	private Book bOoK;
+	private List<Book> pending; //pEnDiNg_LiSt
+	private List<Loan> completed; //cOmPlEtEd_LiSt
+	private Book book; //
 	
 	
-	public bORROW_bOOK_cONTROL() {
-		this.lIbRaRy = Library.GeTiNsTaNcE();
-		sTaTe = CONTROL_STATE.INITIALISED;
+	public BorrowBookControl() { //bORROW_bOOK_cONTROL
+		this.library = library.getInstance(); //GeTiNsTaNcE
+		this.state = ControlState.INITIALISED; //
 	}
 	
 
-	public void SeT_Ui(BorrowBookUI Ui) {
-		if (!sTaTe.equals(CONTROL_STATE.INITIALISED)) 
+	public void setUI(BorrowBookUI UI) {
+		if (!this.state.equals(ControlState.INITIALISED)){ //
 			throw new RuntimeException("BorrowBookControl: cannot call setUI except in INITIALISED state");
 			
-		this.uI = Ui;
-		Ui.SeT_StAtE(BorrowBookUI.uI_STaTe.READY);
-		sTaTe = CONTROL_STATE.READY;		
+		this.UI = UI;//
+		UI.setState(BorrowBookUI.UIState.READY);//
+		this.state = ControlState.READY;//
+		}//added {} for this if condition
 	}
 
 		
-	public void SwIpEd(int mEmBeR_Id) {
-		if (!sTaTe.equals(CONTROL_STATE.READY)) 
+	public void swiped(int memberId) { //chaned swiped and memberId
+		if (!this.state.equals(ControlState.READY)) //
 			throw new RuntimeException("BorrowBookControl: cannot call cardSwiped except in READY state");
 			
-		mEmBeR = lIbRaRy.gEt_MeMbEr(mEmBeR_Id);
-		if (mEmBeR == null) {
-			uI.DiSpLaY("Invalid memberId");
+		this.member = library.MEMBER(memberId);//
+		if (this.member == null) {//
+			this.UI.display("Invalid memberId");//
 			return;
 		}
-		if (lIbRaRy.cAn_MeMbEr_BoRrOw(mEmBeR)) {
-			pEnDiNg_LiSt = new ArrayList<>();
-			uI.SeT_StAtE(BorrowBookUI.uI_STaTe.SCANNING);
-			sTaTe = CONTROL_STATE.SCANNING; 
+		if (this.library.MEMBER_CAN_BORROW(this.member)) { //lIbRaRy.cAn_MeMbEr_BoRrOw
+			this.pending = new ArrayList<>(); //pEnDiNg_LiSt
+			this.UI.setState(BorrowBookUI.UIState.SCANNING);//
+			this.state = ControlState.SCANNING; 
 		}
 		else {
-			uI.DiSpLaY("Member cannot borrow at this time");
-			uI.SeT_StAtE(BorrowBookUI.uI_STaTe.RESTRICTED); 
+			this.UI.display("Member cannot borrow at this time"); //uI.DiSpLaY
+			this.UI.setState(BorrowBookUI.UIState.RESTRICTED); //uI.SeT_StAtE
 		}
 	}
 	
 	
-	public void ScAnNeD(int bOoKiD) {
-		bOoK = null;
-		if (!sTaTe.equals(CONTROL_STATE.SCANNING)) 
+	public void scanned(int bookId) {//channged the variable
+		this.book = null;//
+		if (!this.state.equals(ControlState.SCANNING)) //
 			throw new RuntimeException("BorrowBookControl: cannot call bookScanned except in SCANNING state");
 			
-		bOoK = lIbRaRy.gEt_BoOk(bOoKiD);
-		if (bOoK == null) {
-			uI.DiSpLaY("Invalid bookId");
+		this.book = this.library.Book(bookId);//
+		if (this.book == null) {
+			this.UI.display("Invalid bookId");//
 			return;
 		}
-		if (!bOoK.iS_AvAiLaBlE()) {
-			uI.DiSpLaY("Book cannot be borrowed");
+		if (!this.book.AVAILABLE()) {//
+			this.UI.display("Book cannot be borrowed");// B->displayBook
 			return;
 		}
-		pEnDiNg_LiSt.add(bOoK);
-		for (Book B : pEnDiNg_LiSt) 
-			uI.DiSpLaY(B.toString());
+		this.pending.add(this.book);//
+		for (book displayBook : this.pending) //
+			this.UI.display(displayBook.toString()); //
 		
-		if (lIbRaRy.gEt_NuMbEr_Of_LoAnS_ReMaInInG_FoR_MeMbEr(mEmBeR) - pEnDiNg_LiSt.size() == 0) {
-			uI.DiSpLaY("Loan limit reached");
-			CoMpLeTe();
+		if (this.library.Loans_Remaining_For_Member(this.member) - this.pending.size() == 0) { //gEt_NuMbEr_Of_LoAnS_ReMaInInG_FoR_MeMbEr-->Loans_Remaining_For_Member
+			this.UI.display("Loan limit reached");//
+			this.complete();//
 		}
 	}
 	
 	
-	public void CoMpLeTe() {
-		if (pEnDiNg_LiSt.size() == 0) 
-			CaNcEl();
+	public void complete() { //changed to complete
+		if (this.pending.size() == 0) //changed to pending
+			this.cancel();
 		
 		else {
-			uI.DiSpLaY("\nFinal Borrowing List");
-			for (Book bOoK : pEnDiNg_LiSt) 
-				uI.DiSpLaY(bOoK.toString());
+			this.UI.display("\nFinal Borrowing List");//
+			for (book displayBook : this.pending) {
+				this.UI.display(displayBook.toString());//
+			}
 			
-			cOmPlEtEd_LiSt = new ArrayList<Loan>();
-			uI.SeT_StAtE(BorrowBookUI.uI_STaTe.FINALISING);
-			sTaTe = CONTROL_STATE.FINALISING;
+			this.completed = new ArrayList<Loan>();//changed to completed
+			this.UI.setState(BorrowBookUI.UIState.FINALISING);//changed to BorrowBookUI
+			this.state = ControlState.FINALISING;//changed to ControlState
 		}
 	}
 
 
-	public void CoMmIt_LoAnS() {
-		if (!sTaTe.equals(CONTROL_STATE.FINALISING)) 
+	public void commitLoans() { //changed to commitLoans
+		if (!this.state.equals(ControlState.FINALISING)){ //
 			throw new RuntimeException("BorrowBookControl: cannot call commitLoans except in FINALISING state");
-			
-		for (Book B : pEnDiNg_LiSt) {
-			Loan lOaN = lIbRaRy.iSsUe_LoAn(B, mEmBeR);
-			cOmPlEtEd_LiSt.add(lOaN);			
 		}
-		uI.DiSpLaY("Completed Loan Slip");
-		for (Loan LOAN : cOmPlEtEd_LiSt) 
-			uI.DiSpLaY(LOAN.toString());
+		for (book displayBook : this.pending) { //changed to displayBook and pending
+			loan LOAN = this.library.ISSUE_LOAN(displayBook, this.member); //changed to LOAN, displayBook and this.member
+			this.completed.add(LOAN); //changed to completed			
+		}
+		this.UI.display("Completed Loan Slip");//
+		for (Loan LOAN : this.completed){ //
+			this.UI.display(LOAN.toString());
+		}
 		
-		uI.SeT_StAtE(BorrowBookUI.uI_STaTe.COMPLETED);
-		sTaTe = CONTROL_STATE.COMPLETED;
+		this.UI.setState(BorrowBookUI.UIState.COMPLETED);//cahnged to setState
+		this.state = ControlState.COMPLETED;//
 	}
 
 	
-	public void CaNcEl() {
-		uI.SeT_StAtE(BorrowBookUI.uI_STaTe.CANCELLED);
-		sTaTe = CONTROL_STATE.CANCELLED;
+	public void cancel() {//changed to cancel
+		this.UI.setState(BorrowBookUI.UIState.CANCELLED);//setState
+		this.state = ControlState.CANCELLED;//
 	}
 	
 	
