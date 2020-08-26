@@ -53,13 +53,13 @@ public class Book implements Serializable {
 	}
 
 	
-	public boolean iS_On_LoAn() {
-		return StAtE == sTaTe.ON_LOAN;
+	public boolean isOnLoan() {//changed to isOnLoan
+		return this.state == StateOfBook.ON_LOAN;
 	}
 
 	
-	public boolean iS_DaMaGeD() {
-		return StAtE == sTaTe.DAMAGED;
+	public boolean isDamaged() {//changed to isDamaged
+		return this.state == StateofBook.DAMAGED;
 	}
 
 	
