@@ -38,18 +38,18 @@ public class Book implements Serializable {
 		return bookStringBuilder.toString();//changed to bookStringBuilder
 	}
 
-	public Integer gEtId() {
-		return iD;
+	public Integer getBookId() {//changed to getBookId
+		return this.bookId;
 	}
 
-	public String gEtTiTlE() {
-		return tItLe;
+	public String getTitle() {//changed to getTitle
+		return this.title;
 	}
 
 
 	
-	public boolean iS_AvAiLaBlE() {
-		return StAtE == sTaTe.AVAILABLE;
+	public boolean isAvailable() {//changed to isAvailable
+		return this.state == StateOfBook.AVAILABLE;
 	}
 
 	
