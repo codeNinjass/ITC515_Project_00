@@ -8,20 +8,20 @@ Mediator: Anish
 Reviewer: Bednidhi
 */
 
-public class ReturnBookUI {
+public class ReturnBookUi {
 
 	// static class
-	public static enum uiState { initialised, ready, inspecting, completed };
+	public static enum UiState { Initialised, Ready, Inspecting, Completed };
 
 	private returnBookControl control;
 	private Scanner input;
 	private uiState state;
 
 		
-	public ReturnBookUI(returnBookControl control) {
+	public returnBookUi(returnBookControl control) {
 		this.control = control;
 		input = new Scanner(System.in);
-		state = uiState.initialised;
+		state = UiState.Initialised;
 		control.setUi(this);
 	}
 
@@ -33,10 +33,10 @@ public class ReturnBookUI {
 			
 			switch (state) {
 			
-			case initialised:
+			case Initialised:
 				break;
 				
-			case ready:
+			case Ready:
 				String bookInputString = input("Scan Book (<enter> completes): ");
 				if (bookInputString.length() == 0) 
 					control.scanningComplete();
@@ -52,7 +52,7 @@ public class ReturnBookUI {
 				}
 				break;				
 				
-			case inspecting:
+			case Inspecting:
 				String ans = input("Is book damaged? (Y/N): ");
 				boolean isDamaged = false;
 				if (ans.toUpperCase().equals("Y")) 					
@@ -60,7 +60,7 @@ public class ReturnBookUI {
 				
 				control.dischargeLoan(isDamaged);
 			
-			case completed:
+			case Completed:
 				output("Return processing complete");
 				return;
 			
