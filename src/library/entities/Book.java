@@ -63,13 +63,13 @@ public class Book implements Serializable {
 	}
 
 	
-	public void BoRrOw() {
-		if (StAtE.equals(sTaTe.AVAILABLE)) 
-			StAtE = sTaTe.ON_LOAN;
-		
-		else 
-			throw new RuntimeException(String.format("Book: cannot borrow while book is in state: %s", StAtE));
-		
+	public void borrowBook() { //changed to borrowBook
+		if (this.state.equals(StateOfBook.AVAILABLE)) {
+			this.state = StateOfBook.ON_LOAN;
+		}
+		else {
+			throw new RuntimeException(String.format("Book: cannot borrow while book is in state: %s", this.state));//
+		}
 		
 	}
 
