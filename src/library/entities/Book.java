@@ -15,8 +15,8 @@ public class Book implements Serializable {
 	private String callNumber; //changed to callNumber
 	private int bookId; //changed to bookId
 	
-	private enum sTaTe { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };
-	private sTaTe StAtE;
+	private enum StateOfBook { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };//changed to StatedOfBook
+	private StateOfBook state; //changed to state
 	
 	
 	public Book(String author, String title, String callNo, int id) {
