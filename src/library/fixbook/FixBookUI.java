@@ -31,15 +31,15 @@ public class FixBookUI {  // define class called FixBookUI
 		while (true) {
 			switch (state) {
 			case READY:
-				String bookEntryString = iNpUt("Scan Book (<enter> completes): ");	//BoOk_EnTrY_StRiNg-->bookEntryString
-				if (BoOk_EnTrY_StRiNg.length() == 0) {}
+				String bookEntryString = input("Scan Book (<enter> completes): ");	//BoOk_EnTrY_StRiNg-->bookEntryString
+				if (bookEntryString.length() == 0) {}
 					control.scanningComplete();	
 				}
 				
 				else {
 					try {
-						int BoOk_Id = Integer.valueOf(BoOk_EnTrY_StRiNg).intValue();
-						CoNtRoL.BoOk_ScAnNeD(BoOk_Id);
+						int bookId = Integer.valueOf(bookEntryString).intValue();
+						control.BoOk_ScAnNeD(bookId);
 					}
 					catch (NumberFormatException e) {
 						output("Invalid bookId");	//OuTpUt --> output
@@ -48,12 +48,11 @@ public class FixBookUI {  // define class called FixBookUI
 				break;	
 				
 			case FIXING:
-				String AnS = input("Fix Book? (Y/N) : ");	//iNpUt --> input
-				boolean FiX = false;
-				if (AnS.toUpperCase().equals("Y")) 
-					FiX = true;
-				gi
-				control.FiX_BoOk(FiX);
+				String ans = input("Fix Book? (Y/N) : ");	//iNpUt --> input
+				boolean fix = false;
+				if (ans.toUpperCase().equals("Y")) 
+					fix = true;
+				control.FiX_BoOk(fix);
 				break;
 								
 			case COMPLETED:
