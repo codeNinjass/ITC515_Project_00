@@ -27,7 +27,6 @@ public class FixBookUI {  // define class called FixBookUI
 	
 	public void run() {		//Change function name to universal adopted form. RuN --> run
 		output("Fix Book Use Case UI\n");
-		
 		while (true) {
 			switch (state) {
 			case READY:
@@ -39,7 +38,7 @@ public class FixBookUI {  // define class called FixBookUI
 				else {
 					try {
 						int bookId = Integer.valueOf(bookEntryString).intValue();
-						control.BoOk_ScAnNeD(bookId);
+						control.bookScanned(bookId);
 					}
 					catch (NumberFormatException e) {
 						output("Invalid bookId");	//OuTpUt --> output
@@ -52,7 +51,7 @@ public class FixBookUI {  // define class called FixBookUI
 				boolean fix = false;
 				if (ans.toUpperCase().equals("Y")) 
 					fix = true;
-				control.FiX_BoOk(fix);
+				control.fixBook(fix);
 				break;
 								
 			case COMPLETED:
