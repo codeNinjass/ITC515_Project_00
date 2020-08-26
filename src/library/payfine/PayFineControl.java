@@ -49,9 +49,21 @@ public class PayFineControl { // changing class name as per standard coding conv
 	}
 	
 	
+<<<<<<< HEAD
 	public void cancel() { // changed method name as per standard coding convention from CaNcEl --> cancel
 		if (!state.equals(Controlstate.READY)) 
 		Ui.setState(PayFineUI.uiState.CANCELLED);
+=======
+<<<<<<< Updated upstream
+	public void CaNcEl() { // changed method name as per standard coding convention from CaNcEl --> cancel
+		if (!state.equals(Controlstate.READY)) 
+		Ui.SeT_state(PayFineUI.uI_state.CANCELLED);
+=======
+	public void cancel() { // changed method name as per standard coding convention from CaNcEl --> cancel
+		if (!state.equals(Controlstate.READY)) 
+		Ui.setState(PayFineUI.uiState.CANCELLED); // changed SeT_state to setState and uI_state to uiState 
+>>>>>>> Stashed changes
+>>>>>>> d9763189506e63ea78abe5a61962bce291e53476
 		state = Controlstate.CANCELLED;
 	}
 
