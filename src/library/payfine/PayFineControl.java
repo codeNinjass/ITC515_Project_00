@@ -48,7 +48,6 @@ public class PayFineControl { // changing class name as per standard coding conv
 		state = Controlstate.PAYING;
 	}
 	
-	
 	public void cancel() { // changed method name as per standard coding convention from CaNcEl --> cancel
 		if (!state.equals(Controlstate.READY)) 
 		Ui.setState(PayFineUI.uiState.CANCELLED);
