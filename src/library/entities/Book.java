@@ -20,11 +20,11 @@ public class Book implements Serializable {
 	
 	
 	public Book(String author, String title, String callNo, int bookId) { //changed to bookId and callNumber
-		this.AuThOr = author;
-		this.tItLe = title;
-		this.CALLNO = callNo;
-		this.iD = id;
-		this.StAtE = sTaTe.AVAILABLE;
+		this.author = author; //changed to author
+		this.title = title; //changed to title
+		this.callNumber = callNumber; //changed to callNumber
+		this.bookId = id; //changed to bookId
+		this.state = StateOfBook.AVAILABLE; //changed to state and StateOfBook
 	}
 	
 	public String toString() {
