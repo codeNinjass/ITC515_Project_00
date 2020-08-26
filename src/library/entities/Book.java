@@ -28,14 +28,14 @@ public class Book implements Serializable {
 	}
 	
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("Book: ").append(iD).append("\n")
-		  .append("  Title:  ").append(tItLe).append("\n")
-		  .append("  Author: ").append(AuThOr).append("\n")
-		  .append("  CallNo: ").append(CALLNO).append("\n")
-		  .append("  State:  ").append(StAtE);
+		StringBuilder bookStringBuilder = new StringBuilder(); //changed to from sb->bookStringBuilder
+		sb.append("Book: ").append(this.bookId).append("\n") //changed to this.bookId
+		  .append("  Title:  ").append(this.title).append("\n") //changed to this.title
+		  .append("  Author: ").append(this.author).append("\n") //changed to this.author
+		  .append("  CallNo: ").append(this.callNumber).append("\n") //changed to this.callNumber
+		  .append("  State:  ").append(this.state); //changed to this.state
 		
-		return sb.toString();
+		return bookStringBuilder.toString();//changed to bookStringBuilder
 	}
 
 	public Integer gEtId() {
