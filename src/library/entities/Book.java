@@ -64,7 +64,7 @@ public class Book implements Serializable {
 
 	
 	public void borrowBook() { //changed to borrowBook
-		if (this.state.equals(StateOfBook.AVAILABLE)) {
+		if (this.state.equals(StateOfBook.AVAILABLE)) { //added '{}' for if..else statement
 			this.state = StateOfBook.ON_LOAN;
 		}
 		else {
@@ -74,18 +74,18 @@ public class Book implements Serializable {
 	}
 
 
-	public void ReTuRn(boolean DaMaGeD) {
-		if (StAtE.equals(sTaTe.ON_LOAN)) 
-			if (DaMaGeD) 
-				StAtE = sTaTe.DAMAGED;
-			
-			else 
-				StAtE = sTaTe.AVAILABLE;
-			
+	public void returnBook(boolean DaMaGeD) {//cahnged to returnBook
+		if (this.state.equals(StateOfBook.ON_LOAN)) 
+			if (isDamaged) { //added '{}' to if..else statement
+				this.state = StateOfBook.DAMAGED;
+			}
+			else {
+				this.state = StateOfBook.AVAILABLE;
+			}
 		
-		else 
-			throw new RuntimeException(String.format("Book: cannot Return while book is in state: %s", StAtE));
-				
+		else {
+			throw new RuntimeException(String.format("Book: cannot Return while book is in state: %s", this.state));
+		}	
 	}
 
 	
