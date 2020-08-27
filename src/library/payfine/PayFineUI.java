@@ -56,7 +56,7 @@ public class PayFineUI { // define class name called PayFineUI
 					break;
 				}
 				try {
-					amount = Double.valueOf(amtStr).doubleValue();
+					amount = double.valueOf(amtStr).doubleValue(); // changed Changed Double to double 
 				}
 				catch (NumberFormatException e) {}
 				if (amount <= 0) {
