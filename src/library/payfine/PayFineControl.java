@@ -18,7 +18,7 @@ public class PayFineControl { // changing class name as per standard coding conv
 
 
 	public PayFineControl() { 
-		this.library = library.GeTiNsTaNcE();
+		this.library = library.getInstance();
 		state = Controlstate.INITIALISED;
 	}
 	
@@ -47,7 +47,6 @@ public class PayFineControl { // changing class name as per standard coding conv
 		Ui.setState(PayFineUI.uiState.PAYING);
 		state = Controlstate.PAYING;
 	}
-	
 	
 	public void cancel() { // changed method name as per standard coding convention from CaNcEl --> cancel
 		if (!state.equals(Controlstate.READY)) 
