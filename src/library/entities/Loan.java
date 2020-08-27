@@ -30,7 +30,7 @@ public class Loan implements Serializable {
 	}
 
 	
-	public void checkOVERDUE() { // changed method name from cHeCk_OvEr_DuE to checkOVERDUE
+	public void checkOverDue() { // changed method name from cHeCk_OvEr_DuE to checkOverDue
 		if (state == LoanState.CURRENT &&
 			Calendar.getInstance().getDate().after(Date)) 
 			this.state = LoanState.OVERDUE;			
@@ -38,7 +38,7 @@ public class Loan implements Serializable {
 	}
 
 	
-	public boolean isOVERDUE() { // changed method name from Is_OvEr_DuE to isOVERDUE
+	public boolean isOverDue() { // changed method name from Is_OvEr_DuE to isOverDue
 		return state == LoanState.OVERDUE;
 	}
 
