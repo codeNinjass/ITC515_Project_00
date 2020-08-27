@@ -48,23 +48,23 @@ public class Loan implements Serializable {
 	}
 
 
-	public Date getDueDate() { //  changed method name fromGeT_DuE_DaTe to getDueDate
-		return dueDate;
+	public Date getDueDate() { //  changed method name from GeT_DuE_DaTe to getDueDate
+		return dueDate; 
 	}
 	
 	
 	public String toString() {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-		StringBuilder sb = new StringBuilder();
-		sb.append("Loan:  ").append(loanId).append("\n")
-		  .append("  Borrower ").append(member.getId()).append(" : ")
-		  .append(member.getLastName()).append(", ").append(member.getFirstName()).append("\n")
-		  .append("  Book ").append(Book.getId()).append(" : " )
-		  .append(Book.getTitle()).append("\n")
-		  .append("  DueDate: ").append(sdf.format(Date)).append("\n")
-		  .append("  State: ").append(state);		
-		return sb.toString();
+		StringBuilder stringbuilder = new StringBuilder(); // changed sb to stringbuilder
+		stringbuilder.append("Loan:  ").append(loanId).append("\n") // changed sb to stringbuilder
+					  .append("  Borrower ").append(member.getId()).append(" : ")
+					  .append(member.getLastName()).append(", ").append(member.getFirstName()).append("\n")
+					  .append("  Book ").append(Book.getId()).append(" : " )
+					  .append(Book.getTitle()).append("\n")
+					  .append("  DueDate: ").append(sdf.format(Date)).append("\n")
+					  .append("  State: ").append(state);		
+		return stringbuilder.toString(); // changed sb to stringbuilder
 	}
 
 
