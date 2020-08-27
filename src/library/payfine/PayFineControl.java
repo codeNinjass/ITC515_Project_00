@@ -9,7 +9,7 @@ import library.entities.Member;
 
 public class PayFineControl { // changing class name as per standard coding convention from pAY_fINE_cONTROL --> PayFineControl
 	
-	private PayFineUI Ui;
+	private PayFineUi Ui;
 	private enum Controlstate { INITIALISED, READY, PAYING, COMPLETED, CANCELLED }; // changing class name as per standard coding convention from  --> Controlstate
 	private Controlstate state; // standard naming convention for variable name and its data type  StAtE
 	
@@ -23,12 +23,12 @@ public class PayFineControl { // changing class name as per standard coding conv
 	}
 	
 	
-	public void setUI(PayFineUI uI) { // changed method name
+	public void setUi(PayFineUi Ui) { // changed method name and change uI to Ui 
 		if (!state.equals(Controlstate.INITIALISED)) {
 			throw new RuntimeException("PayFineControl: cannot call setUI except in INITIALISED state");
 		}	
-		this.Ui = uI;
-		uI.setState(PayFineUI.uiState.READY);
+		this.Ui = Ui; // change uI to Ui
+		Ui.setState(PayFineUi.uiState.READY); // change uI to Ui
 		state = Controlstate.READY;		
 	}
 
@@ -44,13 +44,13 @@ public class PayFineControl { // changing class name as per standard coding conv
 			return;
 		}
 		Ui.display(member.toString());
-		Ui.setState(PayFineUI.uiState.PAYING);
+		Ui.setState(PayFineUi.uiState.PAYING); // change PayFineUI to PayFineUi PayFineUi
 		state = Controlstate.PAYING;
 	}
 	
 	public void cancel() { // changed method name as per standard coding convention from CaNcEl --> cancel
 		if (!state.equals(Controlstate.READY)) 
-		Ui.setState(PayFineUI.uiState.CANCELLED);
+		Ui.setState(PayFineUi.uiState.CANCELLED);
 		state = Controlstate.CANCELLED;
 	}
 
@@ -60,16 +60,16 @@ public class PayFineControl { // changing class name as per standard coding conv
 		if (!state.equals(Controlstate.PAYING)) 
 			throw new RuntimeException("PayFineControl: cannot call payFine except in PAYING state");
 			
-		double change = member.PayFine(AmOuNt); // Changed from ChAnGe to change 
+		double change = member.PayFine(amount); // Changed from ChAnGe to change AND AmOuNt to amount
 		if (change > 0) 
 			Ui.display(String.format("Change: $%.2f", change));
 		
 		Ui.display(member.toString());
-		Ui.setState(PayFineUI.uiState.COMPLETED);
+		Ui.setState(PayFineUi.uiState.COMPLETED);
 		state = Controlstate.COMPLETED;
 		return change;
 	}
 	
-
+	
 
 }
