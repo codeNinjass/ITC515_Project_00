@@ -23,7 +23,7 @@ public class FixBookControl {
 			throw new RuntimeException("FixBookControl: cannot call setUI except in INITIALISED state");
 		}
 		this.ui = ui;
-		ui.setState(FixBookUI.uiState.READY);
+		ui.setState(FixBookUI.uiState.READY); //uISTaTe -->uiState
 		state = ControlState.READY;		//StAtE --> state		
 	}
 
