@@ -1,68 +1,67 @@
-package library.fixbook;
-import java.util.Scanner;
+package library.fixbook;	// define package name
+import java.util.Scanner;	//Import scanner class
 
 
-public class FixBookUI {
+public class FixBookUI {  // define class called FixBookUI
 
-	public static enum uI_sTaTe { INITIALISED, READY, FIXING, COMPLETED };
+	public static enum Ustate { INITIALISED, READY, FIXING, COMPLETED };	//u_sTaTe -->Ustate
 
-	private fIX_bOOK_cONTROL CoNtRoL;
-	private Scanner InPuT;
-	private uI_sTaTe StAtE;
+	private FixBookControl control; 
+	private Scanner input;	
+	private UiState state;	
+
 
 	
-	public FixBookUI(fIX_bOOK_cONTROL CoNtRoL) {
-		this.CoNtRoL = CoNtRoL;
-		InPuT = new Scanner(System.in);
-		StAtE = uI_sTaTe.INITIALISED;
-		CoNtRoL.SeT_Ui(this);
+	public FixBookUi(FixBookControl control) {
+		this.control = control;
+		input = new Scanner(System.in);
+		state = UiState.INITIALISED;
+		control.setUi(this);	//SeT_Ui --> setUi
 	}
 
 
-	public void SeT_StAtE(uI_sTaTe state) {
-		this.StAtE = state;
+	public void setState(UiState state) {		//Change function name to universal adopted form. Set_StAte --> setState
+		this.state = state;
 	}
 
 	
-	public void RuN() {
-		OuTpUt("Fix Book Use Case UI\n");
-		
+	public void run() {		//Change function name to universal adopted form. RuN --> run
+		output("Fix Book Use Case UI\n");
 		while (true) {
-			
-			switch (StAtE) {
-			
+			switch (state) {
 			case READY:
-				String BoOk_EnTrY_StRiNg = iNpUt("Scan Book (<enter> completes): ");
-				if (BoOk_EnTrY_StRiNg.length() == 0) 
-					CoNtRoL.SCannING_COMplete();
+				String bookEntryString = input("Scan Book (<enter> completes): ");	//BoOk_EnTrY_StRiNg-->bookEntryString
+				if (bookEntryString.length() == 0){
+					control.scanningComplete();	
+				}
 				
 				else {
 					try {
-						int BoOk_Id = Integer.valueOf(BoOk_EnTrY_StRiNg).intValue();
-						CoNtRoL.BoOk_ScAnNeD(BoOk_Id);
+						int bookId = Integer.valueOf(bookEntryString).intValue();
+						control.bookScanned(bookId);
 					}
 					catch (NumberFormatException e) {
-						OuTpUt("Invalid bookId");
+						output("Invalid bookId");	//OuTpUt --> output
 					}
 				}
 				break;	
 				
 			case FIXING:
-				String AnS = iNpUt("Fix Book? (Y/N) : ");
-				boolean FiX = false;
-				if (AnS.toUpperCase().equals("Y")) 
-					FiX = true;
-				
-				CoNtRoL.FiX_BoOk(FiX);
+				String ans = input("Fix Book? (Y/N) : ");	//iNpUt --> input
+				boolean fix = false;
+				if (ans.toUpperCase().equals("Y")){
+					fix = true;
+				}
+				control.fixBook(fix);
 				break;
 								
 			case COMPLETED:
-				OuTpUt("Fixing process complete");
+				output("Fixing process complete");	//OuTpUt --> output
 				return;
 			
 			default:
-				OuTpUt("Unhandled state");
-				throw new RuntimeException("FixBookUI : unhandled state :" + StAtE);			
+				output("Unhandled state");		//OuTpUt --> output
+				throw new RuntimeException("FixBookUI : unhandled state :" + state);			
 			
 			}		
 		}
@@ -70,19 +69,19 @@ public class FixBookUI {
 	}
 
 	
-	private String iNpUt(String prompt) {
+	private String input(String prompt) {		//change function name to universal addopted naming form. iNpUt -->input
 		System.out.print(prompt);
-		return InPuT.nextLine();
+		return input.nextLine();
 	}	
 		
 		
-	private void OuTpUt(Object object) {
+	private void output(Object object) {		// change function name to universal addopted naming form. OutpUt -->output
 		System.out.println(object);
 	}
 	
 
-	public void dIsPlAy(Object object) {
-		OuTpUt(object);
+	public void display(Object object) {		//change function name to universal addopted naming form. dIsPlAy -->display
+		output(object);
 	}
 	
 	
